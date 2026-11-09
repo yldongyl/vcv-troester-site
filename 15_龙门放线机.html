@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙门放线机 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 15/23 · 收放线系统</div>
+  <h1>龙门放线机 <span class="sub">地面门式放线设备 · 横移与张力/舞蹈轮控制 · 导体与盘具放线</span></h1>
+  <div class="badges">
+    <span>失效模式 ×4</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <div class="cards">
+      <div class="card"><div class="k">构成</div><div class="v">门式架 · 横移台车 · 线盘承接 · 驱动与张力控制</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">收放线系统 · 全线导体放线端</div></div>
+      <div class="card"><div class="k">横移型式</div><div class="v">地面横移（轨道＋台车对位换盘）</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">变频驱动回转 · 张力/舞蹈轮/速度控制</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游：导体盘具换盘 · 下游：浮动轮/储线方向</div></div>
+    </div>
+    <p><b>龙门放线机</b>为全线导体放线端的地面门式放线设备，属收放线系统，负责向挤出段连续释放导体。</p>
+    <p>门式架（横梁＋双立柱）经顶尖与承载臂承接满盘线盘，横移台车沿地面轨道往复，完成对位与换盘。</p>
+    <p>线盘由变频驱动电机经减速机带动回转，在张力控制单元（张力/舞蹈轮/速度控制）作用下随电缆拉出放线，保持导体恒定张力。</p>
+    <p>放出的导体向下游浮动轮（dancer）与储线方向输送，是挤出塑化工段的来料起点。</p>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 620" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="34" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">龙门放线机（放线工况）· 结构简化示意</text>
+
+      <!-- 门式框架：横梁+双立柱 -->
+      <rect x="150" y="90" width="580" height="28" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="170" y="118" width="30" height="382" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="680" y="118" width="30" height="382" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="450" y="78" text-anchor="middle" font-size="11.5" fill="#546e7a">门式框架（横梁＋双立柱）</text>
+
+      <!-- 横移台车 -->
+      <rect x="150" y="500" width="580" height="40" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="300" y1="520" x2="580" y2="520" stroke="#546e7a" stroke-width="2"/>
+      <polygon points="292,520 306,513 306,527" fill="#546e7a"/>
+      <polygon points="588,520 574,513 574,527" fill="#546e7a"/>
+      <text x="440" y="516" text-anchor="middle" font-size="10.5" fill="#37474f">横移台车（对位换盘）</text>
+
+      <!-- 地面横移轨道 -->
+      <rect x="70" y="552" width="800" height="20" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="90" y1="562" x2="850" y2="562" stroke="#90a4ae" stroke-width="2" stroke-dasharray="14 6"/>
+      <text x="470" y="592" text-anchor="middle" font-size="11.5" fill="#546e7a">地面横移轨道</text>
+
+      <!-- 顶尖与主轴 -->
+      <line x1="200" y1="330" x2="700" y2="330" stroke="#37474f" stroke-width="5"/>
+      <polygon points="318,316 318,344 296,330" fill="#455a64"/>
+      <polygon points="582,316 582,344 604,330" fill="#455a64"/>
+      <text x="268" y="304" text-anchor="middle" font-size="10.5" fill="#546e7a">顶尖承接</text>
+      <line x1="282" y1="308" x2="308" y2="322" stroke="#546e7a" stroke-width="1.1"/>
+
+      <!-- 线盘 -->
+      <circle cx="450" cy="330" r="120" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <circle cx="450" cy="330" r="86" fill="none" stroke="#1565c0" stroke-width="26" opacity="0.28"/>
+      <circle cx="450" cy="330" r="36" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="450" y="326" text-anchor="middle" font-size="11" fill="#37474f">线盘筒体</text>
+      <text x="450" y="342" text-anchor="middle" font-size="10" fill="#546e7a">缠绕导体/电缆</text>
+
+      <!-- 放线回转方向 -->
+      <path d="M 398 224 A 66 66 0 0 1 502 224" fill="none" stroke="#1565c0" stroke-width="2.4"/>
+      <polygon points="502,224 490,216 494,230" fill="#1565c0"/>
+      <text x="450" y="206" text-anchor="middle" font-size="11" fill="#1565c0">放线：线盘随电缆拉出回转</text>
+
+      <!-- 变频驱动电机 · 承载臂 -->
+      <rect x="606" y="296" width="66" height="58" rx="6" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="639" y="320" text-anchor="middle" font-size="10" fill="#37474f">变频交流</text>
+      <text x="639" y="336" text-anchor="middle" font-size="10" fill="#37474f">驱动电机</text>
+      <text x="639" y="372" text-anchor="middle" font-size="10" fill="#546e7a">承载臂驱动（含减速机）</text>
+      <line x1="639" y1="354" x2="639" y2="362" stroke="#546e7a" stroke-width="1.1"/>
+
+      <!-- 张力控制单元 -->
+      <rect x="760" y="238" width="160" height="76" rx="6" fill="#e8f0fb" stroke="#2980b9" stroke-width="1.8"/>
+      <text x="840" y="264" text-anchor="middle" font-size="11.5" fill="#1f5fa8">张力控制单元</text>
+      <text x="840" y="282" text-anchor="middle" font-size="10.5" fill="#5d6d7e">张力 / 舞蹈轮 / 速度控制</text>
+      <text x="840" y="300" text-anchor="middle" font-size="10.5" fill="#5d6d7e">气缸与比例阀驱动 dancer</text>
+      <line x1="760" y1="284" x2="672" y2="315" stroke="#2980b9" stroke-width="1.2"/>
+
+      <!-- 电缆引出 -->
+      <path d="M 540 432 L 706 432 L 752 432" fill="none" stroke="#1565c0" stroke-width="4" opacity="0.85"/>
+      <polygon points="760,432 746,425 746,439" fill="#1565c0"/>
+      <text x="628" y="452" text-anchor="middle" font-size="11" fill="#5d6d7e">导体引出 → 向下游浮动轮 / 储线方向</text>
+    </svg>
+    </div>
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>线盘制动/张力</td><td>失控</td><td>载荷变化＋执行器老化</td><td>导体松紧不均→挤出段张力扰动</td></tr>
+      <tr><td>dancer机构</td><td>气压/位置失准</td><td>比例阀与气缸老化</td><td>张力波动上传</td></tr>
+      <tr><td>横移机构</td><td>磨损/卡阻</td><td>导轨与丝杠暴露工况</td><td>换盘/排线异常</td></tr>
+      <tr><td>驱动减速机</td><td>磨损</td><td>启停冲击</td><td>放线速度不稳</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

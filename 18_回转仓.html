@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>回转仓 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 18/23 · S11 压力容器</div>
+    <h1>回转仓 <span class="sub">— 塔顶回转压力容器 · 电缆 180° 换向与腔压维持</span></h1>
+    <div class="badges">
+      <span>失效模式 ×4</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ======================= 1. 设备功能概述 ======================= -->
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>回转仓</b>为 VCV 塔顶的回转压力容器：电缆在仓内完成 180° 换向（自交联管一侧上行、至塔顶牵引单元一侧下行），并维持仓内腔压，属<b>涉压安全设备</b>。</p>
+    <p>关键结构组成：回转压力容器本体（壳体与随动顶盖）、底部法兰与密封、回转支撑滚道（大直径低速重载轴承）、外齿圈与驱动小齿轮+回转驱动电机（减速）、仓内换向轮及塔顶支撑平台。</p>
+    <p>工作方式：顶盖随动缓慢回转，电缆连续穿行不换向停机；回转扭矩经"驱动电机—小齿轮—外齿圈"机械传动副输入；腔压由压力边界（壳体·底法兰·回转密封面构成的涉压安全界限）维持。</p>
+    <p>工艺位置：位于塔顶，上游承接交联管段（CV 管）侧上行缆线，下游衔接塔顶牵引单元，是全线缆线路径中唯一的 180° 换向承压节点。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备定位</div><div class="v">塔顶 · 电缆 180° 换向 + 维持腔压</div></div>
+      <div class="card"><div class="k">关键结构</div><div class="v">仓体 · 回转支撑滚道 · 小齿轮/电机 · 换向轮</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">顶盖随动缓慢回转 · 机械驱动 + 承压腔体</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上交联管段 · 下塔顶牵引单元</div></div>
+      <div class="card"><div class="k">安全属性</div><div class="v" style="color:#c0392b">涉压安全设备 · 处置须专项安全评审</div></div>
+    </div>
+  </section>
+
+  <!-- ======================= 2. 结构示意图与可能的失效模式 ======================= -->
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 680" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="30" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">塔顶回转压力容器剖面示意 · 紫色虚线为压力边界（涉压安全界限）</text>
+
+      <!-- VCV 塔轮廓（背景参照） -->
+      <line x1="240" y1="120" x2="240" y2="660" stroke="#90a4ae" stroke-width="2" stroke-dasharray="12 8"/>
+      <line x1="740" y1="120" x2="740" y2="660" stroke="#90a4ae" stroke-width="2" stroke-dasharray="12 8"/>
+      <text x="490" y="112" text-anchor="middle" font-size="11.5" fill="#78909c">VCV 塔顶（背景参照）</text>
+
+      <!-- 回转压力容器本体（壳体+腔体） -->
+      <path d="M 330 210 Q 490 128 650 210 L 650 424 L 330 424 Z" fill="#f5f7fa" stroke="#37474f" stroke-width="3"/>
+      <text x="490" y="176" text-anchor="middle" font-size="13" fill="#37474f" font-weight="bold">回转压力容器本体（大直径 · 顶盖随动缓慢回转）</text>
+      <text x="490" y="360" text-anchor="middle" font-size="11.5" fill="#546e7a">腔体 · 维持腔压</text>
+
+      <!-- 底部法兰 / 快开压力环结合面 -->
+      <rect x="322" y="424" width="336" height="12" rx="3" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+
+      <!-- 压力边界（紫色虚线）：壳体+底法兰+回转密封面（涉压安全界限·部件示意） -->
+      <path d="M 318 212 Q 490 122 662 212 L 662 456 L 318 456 Z" fill="none" stroke="#8e44ad" stroke-width="2.2" stroke-dasharray="9 6"/>
+      <line x1="318" y1="290" x2="228" y2="248" stroke="#8e44ad" stroke-width="1.2"/>
+      <text x="196" y="228" text-anchor="middle" font-size="11.5" fill="#8e44ad" font-weight="bold">压力边界（涉压安全界限）</text>
+      <text x="196" y="244" text-anchor="middle" font-size="10.5" fill="#8e44ad">壳体 · 底法兰 · 回转密封面</text>
+
+      <!-- 回转支撑滚道（环形剖视：静圈+滚珠+动圈，中心留孔穿电缆） -->
+      <ellipse cx="490" cy="470" rx="185" ry="30" fill="#dfe6ee" stroke="#37474f" stroke-width="2.2"/>
+      <ellipse cx="490" cy="470" rx="100" ry="17" fill="#fff" stroke="#37474f" stroke-width="1.8"/>
+      <ellipse cx="490" cy="470" rx="142" ry="23" fill="none" stroke="#90a4ae" stroke-width="1.4" stroke-dasharray="6 4"/>
+      <circle cx="348" cy="470" r="4.5" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="632" cy="470" r="4.5" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="419" cy="454" r="4.5" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="561" cy="454" r="4.5" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="419" cy="486" r="4.5" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="561" cy="486" r="4.5" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <line x1="348" y1="470" x2="286" y2="512" stroke="#546e7a" stroke-width="1.2"/>
+      <text x="228" y="524" text-anchor="middle" font-size="11.5" fill="#546e7a">回转支撑滚道</text>
+      <text x="228" y="540" text-anchor="middle" font-size="10.5" fill="#546e7a">（大直径低速重载·滚珠示出）</text>
+
+      <!-- 外齿圈 + 驱动小齿轮 + 回转驱动电机 -->
+      <ellipse cx="490" cy="494" rx="232" ry="36" fill="none" stroke="#37474f" stroke-width="2.4"/>
+      <g stroke="#37474f" stroke-width="1.8">
+        <line x1="662" y1="512" x2="669" y2="522"/><line x1="688" y1="516" x2="696" y2="524"/>
+        <line x1="708" y1="505" x2="718" y2="510"/><line x1="716" y1="490" x2="726" y2="492"/>
+        <line x1="318" y1="512" x2="311" y2="522"/><line x1="292" y1="516" x2="284" y2="524"/>
+      </g>
+      <circle cx="742" cy="494" r="17" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="742" y1="477" x2="742" y2="483" stroke="#37474f" stroke-width="2"/>
+      <line x1="742" y1="505" x2="742" y2="511" stroke="#37474f" stroke-width="2"/>
+      <line x1="725" y1="494" x2="731" y2="494" stroke="#37474f" stroke-width="2"/>
+      <text x="700" y="452" text-anchor="middle" font-size="11" fill="#546e7a">外齿圈</text>
+      <line x1="742" y1="477" x2="742" y2="462" stroke="#546e7a" stroke-width="1"/>
+      <text x="756" y="466" font-size="10.5" fill="#546e7a">驱动小齿轮</text>
+      <rect x="762" y="482" width="86" height="30" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="762" y1="494" x2="759" y2="494" stroke="#37474f" stroke-width="2"/>
+      <text x="805" y="476" text-anchor="middle" font-size="11" fill="#37474f">回转驱动电机（减速）</text>
+
+      <!-- 塔顶支撑平台（静置·中留孔） -->
+      <rect x="268" y="540" width="150" height="20" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="562" y="540" width="150" height="20" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="310" y="578" text-anchor="middle" font-size="11" fill="#546e7a">塔顶支撑平台（静置·中心留孔）</text>
+
+      <!-- 电缆 180° 换向路径（上行→仓内换向轮→下行） -->
+      <circle cx="490" cy="300" r="38" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+      <circle cx="490" cy="300" r="9" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="490" y="252" text-anchor="middle" font-size="11" fill="#546e7a">仓内换向轮（180°）</text>
+      <path d="M 452 660 L 452 300 A 38 38 0 0 1 528 300 L 528 660" fill="none" stroke="#1565c0" stroke-width="5" opacity="0.85"/>
+      <polygon points="452,240 446,256 458,256" fill="#1565c0" transform="translate(0,18)"/>
+      <circle cx="452" cy="470" r="8" fill="#fff" stroke="#37474f" stroke-width="2"/>
+      <circle cx="528" cy="470" r="8" fill="#fff" stroke="#37474f" stroke-width="2"/>
+      <line x1="534" y1="464" x2="600" y2="416" stroke="#546e7a" stroke-width="1"/>
+      <text x="656" y="404" text-anchor="middle" font-size="10.5" fill="#546e7a">电缆穿越密封（维持腔压）</text>
+      <text x="416" y="642" text-anchor="middle" font-size="11.5" fill="#1565c0">↑ 自交联管侧上行</text>
+      <text x="572" y="642" text-anchor="middle" font-size="11.5" fill="#1565c0">↓ 至塔顶牵引单元下行</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>回转支撑</td><td>滚道疲劳/缺脂</td><td>巨大倾覆力矩+低速</td><td>转动力矩上升·卡滞</td></tr>
+      <tr><td>回转驱动</td><td>小齿轮磨损/电机过载</td><td>换向载荷</td><td>换向失准</td></tr>
+      <tr><td>法兰与密封（涉压）</td><td>渗漏→腔压失稳</td><td>热循环+紧固松弛</td><td>⛔处置须专项安全评审</td></tr>
+      <tr><td>结构连接</td><td>螺栓松动</td><td>换向冲击循环</td><td>安全隐患（点检项）</td></tr>
+    </table>
+
+    <p class="small" style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+
+</body>
+</html>

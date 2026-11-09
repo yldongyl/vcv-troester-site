@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导体浮动轮 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 17/23 · 收放线系统</div>
+  <h1>导体浮动轮 <span class="sub">dancer · 导体放线端为导体提供连续恒定张力</span></h1>
+  <div class="badges">
+    <span>失效模式 ×4</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <div class="cards">
+      <div class="card"><div class="k">构成</div><div class="v">摆臂浮动导轮 · 气动比例阀 · 气缸/配重 · 气源处理</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">导体放线端张力缓冲，衔接放线与储线段</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">气动＋机械：比例阀调气缸气压，与配重共同给定张力</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游为导体放线，下游往储线器/导体预热段</div></div>
+    </div>
+    <p><b>导体浮动轮（dancer）</b>是VCV线导体放线段的张力缓冲装置，属收放线系统，安装于导体放线与储线段之间，为导体提供连续恒定张力。</p>
+    <p>主要结构由摆臂浮动导轮、枢轴摆臂、配重、气动比例阀、气缸及气源处理单元组成，导体绕行浮动导轮轮槽。</p>
+    <p>工作方式以气动与机械配合：气动比例阀按设定值调节进入气缸的控制气压，气缸驱动摆臂，与配重共同决定张力给定；浮动导轮随张力上下浮动，缓冲放线张力波动，向下游连续稳定释放导体。</p>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 470" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="34" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">导体浮动轮（dancer）· 结构简化示意</text>
+
+      <!-- 机架立柱与地面 -->
+      <rect x="280" y="120" width="24" height="320" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="60" y1="440" x2="880" y2="440" stroke="#37474f" stroke-width="2.5"/>
+
+      <!-- 摆臂与枢轴 -->
+      <line x1="300" y1="150" x2="480" y2="320" stroke="#37474f" stroke-width="6"/>
+      <circle cx="300" cy="150" r="8" fill="#fff" stroke="#37474f" stroke-width="2.5"/>
+      <text x="326" y="142" font-size="11" fill="#37474f">枢轴</text>
+      <text x="342" y="248" font-size="11.5" fill="#37474f" transform="rotate(46 342 248)">摆臂</text>
+
+      <!-- 配重（枢轴对侧） -->
+      <line x1="300" y1="150" x2="212" y2="88" stroke="#37474f" stroke-width="5"/>
+      <rect x="168" y="58" width="60" height="44" rx="4" fill="#dce4ec" stroke="#37474f" stroke-width="2"/>
+      <text x="198" y="76" text-anchor="middle" font-size="10.5" fill="#37474f">配重</text>
+      <text x="198" y="90" text-anchor="middle" font-size="9.5" fill="#5d6d7e">（辅助调定）</text>
+
+      <!-- 浮动导轮 -->
+      <circle cx="480" cy="320" r="45" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <circle cx="480" cy="320" r="10" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="480" y="392" text-anchor="middle" font-size="11.5" fill="#37474f">浮动导轮（导体绕行）</text>
+
+      <!-- 浮动方向双箭头 -->
+      <line x1="566" y1="252" x2="566" y2="330" stroke="#1565c0" stroke-width="2.2"/>
+      <polygon points="566,246 559,260 573,260" fill="#1565c0"/>
+      <polygon points="566,336 559,322 573,322" fill="#1565c0"/>
+      <text x="578" y="284" font-size="11" fill="#1565c0">随张力浮动</text>
+
+      <!-- 气缸（驱动摆臂端） -->
+      <rect x="424" y="404" width="44" height="30" rx="4" fill="#eceff1" stroke="#8e44ad" stroke-width="2"/>
+      <line x1="446" y1="404" x2="460" y2="352" stroke="#8e44ad" stroke-width="3.5"/>
+      <text x="446" y="424" text-anchor="middle" font-size="10.5" fill="#6c3483">气缸</text>
+
+      <!-- 气动比例阀 -->
+      <rect x="620" y="386" width="130" height="58" rx="5" fill="#f5eef8" stroke="#8e44ad" stroke-width="2"/>
+      <text x="685" y="410" text-anchor="middle" font-size="11.5" fill="#6c3483">气动比例阀</text>
+      <text x="685" y="428" text-anchor="middle" font-size="10" fill="#5d6d7e">设定→控制气压</text>
+      <path d="M 620 415 L 468 415" fill="none" stroke="#8e44ad" stroke-width="2.2"/>
+
+      <!-- 气源处理 -->
+      <rect x="790" y="386" width="120" height="58" rx="5" fill="#f5eef8" stroke="#8e44ad" stroke-width="2"/>
+      <text x="850" y="410" text-anchor="middle" font-size="11" fill="#6c3483">气源处理</text>
+      <text x="850" y="428" text-anchor="middle" font-size="10" fill="#5d6d7e">过滤 / 减压</text>
+      <line x1="790" y1="415" x2="750" y2="415" stroke="#8e44ad" stroke-width="2.2"/>
+
+      <!-- 导体路径（绕行轮顶） -->
+      <path d="M 70 268 L 436 268 A 44 44 0 0 1 524 268 L 884 268" fill="none" stroke="#1565c0" stroke-width="4.5" opacity="0.85"/>
+      <polygon points="892,268 876,260 876,276" fill="#1565c0"/>
+      <text x="170" y="252" text-anchor="middle" font-size="11.5" fill="#1565c0">← 来自导体放线段</text>
+      <text x="706" y="252" text-anchor="middle" font-size="11.5" fill="#1565c0">去储线器 / 导体预热段 →</text>
+    </svg>
+    </div>
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>气动比例阀</td><td>漂移/迟滞</td><td>阀芯磨损·气源质量</td><td>张力静默偏差</td></tr>
+      <tr><td>气缸</td><td>内泄/卡滞</td><td>密封老化</td><td>摆动迟滞</td></tr>
+      <tr><td>dancer轮轴承</td><td>磨损</td><td>长期摆动</td><td>异响与卡阻</td></tr>
+      <tr><td>配重/机构摩擦</td><td>异常阻力</td><td>连接件锈蚀</td><td>张力曲线失真</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:var(--c-sub)">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

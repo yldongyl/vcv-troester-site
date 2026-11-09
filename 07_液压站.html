@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>液压站 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 07/23 · 端封液压</div>
+  <h1>液压站 <span class="sub">端部密封与接头箱液压动作的动力源</span></h1>
+  <div class="badges">
+    <span>失效模式 ×5</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>液压站</b>是上/下端部密封液压夹持与接头箱液压机构的共用动力源，由油箱、泵组（电机＋液压泵）、阀块与蓄能器组成。</p>
+    <p>液压泵自油箱吸油并建压，压力油经阀块分配与管路送往各液压执行器，回油经回油管返回油箱。</p>
+    <p>蓄能器储存压力油、补偿微泄漏，在泵卸荷或瞬时大流量需求时维持系统压力，保障端封夹持力的连续与稳定。</p>
+    <p>工作方式为民用成熟的电液转换：电机驱动液压泵将机械能转为液压能，由阀块完成方向与压力控制。</p>
+    <div class="cards">
+      <div class="card"><div class="k">构成</div><div class="v">油箱 · 泵组 · 阀块 · 蓄能器</div></div>
+      <div class="card"><div class="k">服务对象</div><div class="v">端封液压夹持 · 接头箱液压机构</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">电液转换 · 阀块控制 · 蓄能保压</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上接配电与控制 · 下接液压执行器与回油</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 540" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">液压站（端封 / 接头箱动力源）结构示意图 · 非按比例</text>
+
+      <!-- 站体边界 -->
+      <rect x="40" y="60" width="560" height="380" rx="6" fill="#fbfcfe" stroke="#37474f" stroke-width="2"/>
+      <text x="60" y="82" font-size="12" fill="#37474f">液压站</text>
+
+      <!-- 油箱 -->
+      <rect x="70" y="240" width="180" height="150" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <rect x="72" y="306" width="176" height="82" fill="#d6eaf8" opacity="0.7"/>
+      <line x1="72" y1="306" x2="248" y2="306" stroke="#2980b9" stroke-width="2"/>
+      <text x="150" y="262" text-anchor="middle" font-size="12" fill="#37474f">油箱</text>
+      <!-- 油位计（既有表镜） -->
+      <rect x="236" y="262" width="12" height="112" fill="#fff" stroke="#546e7a" stroke-width="1.4"/>
+      <line x1="236" y1="306" x2="248" y2="306" stroke="#2980b9" stroke-width="2"/>
+      <text x="242" y="388" text-anchor="middle" font-size="9" fill="#546e7a">油位计</text>
+
+      <!-- 泵组：电机 + 液压泵 -->
+      <circle cx="330" cy="402" r="26" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="330" y="407" text-anchor="middle" font-size="13" fill="#37474f">M</text>
+      <line x1="356" y1="402" x2="375" y2="402" stroke="#37474f" stroke-width="3"/>
+      <rect x="375" y="382" width="70" height="42" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="410" y="406" text-anchor="middle" font-size="10" fill="#37474f">液压泵</text>
+      <text x="372" y="448" text-anchor="middle" font-size="9.5" fill="#5d6d7e">泵组（电机＋液压泵）</text>
+      <!-- 吸油管 -->
+      <path d="M 150 390 L 150 434 L 375 434 L 375 424" fill="none" stroke="#546e7a" stroke-width="1.8"/>
+
+      <!-- 阀块 -->
+      <path d="M 445 402 L 475 402 L 475 332" fill="none" stroke="#546e7a" stroke-width="2"/>
+      <rect x="480" y="280" width="90" height="52" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="525" y="310" text-anchor="middle" font-size="11" fill="#37474f">阀块</text>
+
+      <!-- 蓄能器 -->
+      <line x1="525" y1="280" x2="525" y2="252" stroke="#546e7a" stroke-width="1.8"/>
+      <ellipse cx="525" cy="230" rx="16" ry="22" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <line x1="511" y1="236" x2="539" y2="236" stroke="#546e7a" stroke-width="1.2"/>
+      <text x="548" y="234" font-size="10.5" fill="#546e7a">蓄能器</text>
+
+      <!-- 回油管（阀块→油箱顶部） -->
+      <path d="M 480 294 L 456 294 L 456 132 L 150 132 L 150 240" fill="none" stroke="#546e7a" stroke-width="2"/>
+      <text x="300" y="124" text-anchor="middle" font-size="10" fill="#546e7a">回油管</text>
+
+      <!-- 压力油输出（去端封管路） -->
+      <path d="M 570 306 L 646 306" stroke="#546e7a" stroke-width="2" fill="none"/>
+      <polygon points="644,300 656,306 644,312" fill="#546e7a"/>
+      <text x="592" y="296" font-size="9.5" fill="#5d6d7e">压力油输出</text>
+
+      <!-- 下游执行机构（设备接口关系） -->
+      <rect x="656" y="276" width="270" height="60" rx="6" fill="#fbfcfe" stroke="#37474f" stroke-width="1.6" stroke-dasharray="6 4"/>
+      <text x="791" y="300" text-anchor="middle" font-size="11.5" fill="#37474f">液压执行器</text>
+      <text x="791" y="320" text-anchor="middle" font-size="10" fill="#5d6d7e">端部密封夹持 · 接头箱机构</text>
+
+      <!-- 保压与失效机理说明（通用行业口径） -->
+      <rect x="656" y="70" width="290" height="106" rx="6" fill="#f4f6f9" stroke="#90a4ae" stroke-width="1.4"/>
+      <text x="670" y="92" font-size="11" fill="#37474f" font-weight="bold">保压逻辑与失效机理（行业通用）</text>
+      <text x="670" y="115" font-size="10" fill="#2c3e50">泵建压·阀块分配·蓄能器保压补漏</text>
+      <text x="670" y="137" font-size="10" fill="#2c3e50">漏油 → 失压 → 上密封保持力丧失</text>
+      <text x="670" y="159" font-size="10" fill="#2c3e50">夹持力丧失直接影响端部密封屏障</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>液压泵</td><td>磨损内泄/气蚀</td><td>长期高压运转</td><td>建压慢·油温上行</td></tr>
+      <tr><td>蓄能器</td><td>皮囊失效/预充压丢失</td><td>橡胶老化</td><td>保压能力下降·瞬时响应劣化</td></tr>
+      <tr><td>阀件</td><td>内泄/卡滞</td><td>油液污染</td><td>执行机构动作失准</td></tr>
+      <tr><td>油箱与管路</td><td>渗漏</td><td>密封与振动疲劳</td><td>油位下降（失压前兆）</td></tr>
+      <tr><td>油液</td><td>油温上行/污染</td><td>内泄发热+颗粒积累</td><td>密封与阀件加速劣化</td></tr>
+    </table>
+
+    <p class="small" style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

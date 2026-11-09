@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导体预热装置 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 05/23 · 导体预热系统</div>
+  <h1>导体预热装置 <span class="sub">挤出前导体感应预热（上/下/备用多套）· 功率单元各支路独立水冷</span></h1>
+  <div class="badges">
+    <span>失效模式 ×5</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>导体预热装置位于放线/储线与三层共挤挤出机组之间，在导体进入机头前对其进行感应预热。</p>
+    <p>配置为上预热、下预热并设备用，多套独立部署，各自拥有独立的功率支路。</p>
+    <p>关键结构组成：感应线圈（上/下/备用）、感应功率柜（变频器、电容器、变压器、电抗器）、冷却水支路与冷却水箱供水系统。</p>
+    <p>工作方式（电）：功率单元将电能转换为中频功率馈入感应线圈，交变磁场在导体表层感应涡流并加热，属非接触式加热。</p>
+    <p>工作方式（液）：线圈与各功率支路均设独立水冷回路，由冷却水箱与供水管路循环带走热量；导体预热温度是后续交联固化的重要工艺前提。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备构成</div><div class="v">上/下预热 + 备用 · 多套</div></div>
+      <div class="card"><div class="k">功率单元</div><div class="v">变频器 · 电容器 · 变压器 · 电抗器</div></div>
+      <div class="card"><div class="k">冷却方式</div><div class="v">各支路独立水冷</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">放线/储线与挤出机组之间</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 580" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">导体预热装置 · 感应线圈、功率柜与冷却水支路示意</text>
+
+      <!-- 导体工艺路径 -->
+      <line x1="40" y1="170" x2="468" y2="170" stroke="#1565c0" stroke-width="4"/>
+      <polygon points="468,163 482,170 468,177" fill="#1565c0"/>
+      <text x="80" y="156" font-size="11" fill="#1565c0">导体（来自放线/储线）</text>
+      <text x="452" y="194" text-anchor="middle" font-size="11" fill="#1565c0">至挤出机组</text>
+
+      <!-- 上预热线圈 -->
+      <g fill="none" stroke="#b35c00" stroke-width="2.2">
+        <ellipse cx="112" cy="170" rx="8" ry="34"/><ellipse cx="134" cy="170" rx="8" ry="34"/>
+        <ellipse cx="156" cy="170" rx="8" ry="34"/><ellipse cx="178" cy="170" rx="8" ry="34"/>
+        <ellipse cx="200" cy="170" rx="8" ry="34"/><ellipse cx="222" cy="170" rx="8" ry="34"/>
+      </g>
+      <text x="167" y="230" text-anchor="middle" font-size="11.5" fill="#b35c00">上预热线圈</text>
+
+      <!-- 下预热线圈 -->
+      <g fill="none" stroke="#b35c00" stroke-width="2.2">
+        <ellipse cx="278" cy="170" rx="8" ry="34"/><ellipse cx="300" cy="170" rx="8" ry="34"/>
+        <ellipse cx="322" cy="170" rx="8" ry="34"/><ellipse cx="344" cy="170" rx="8" ry="34"/>
+        <ellipse cx="366" cy="170" rx="8" ry="34"/><ellipse cx="388" cy="170" rx="8" ry="34"/>
+      </g>
+      <text x="333" y="230" text-anchor="middle" font-size="11.5" fill="#b35c00">下预热线圈</text>
+      <text x="250" y="252" text-anchor="middle" font-size="10" fill="#5d6d7e">上/下预热 + 备用，多套配置；线圈均水冷</text>
+
+      <!-- 功率输出至线圈 -->
+      <path d="M 570 145 H 167" fill="none" stroke="#c0392b" stroke-width="2.2"/>
+      <line x1="167" y1="145" x2="167" y2="140" stroke="#c0392b" stroke-width="2.2"/>
+      <polygon points="161,144 167,134 173,144" fill="#c0392b"/>
+      <line x1="333" y1="145" x2="333" y2="140" stroke="#c0392b" stroke-width="2.2"/>
+      <polygon points="327,144 333,134 339,144" fill="#c0392b"/>
+      <text x="505" y="137" text-anchor="middle" font-size="9.5" fill="#c0392b">功率输出至上下线圈</text>
+
+      <!-- 感应功率柜（四部件） -->
+      <rect x="570" y="110" width="375" height="220" rx="8" fill="#fbfcfe" stroke="#37474f" stroke-width="2"/>
+      <text x="757" y="131" text-anchor="middle" font-size="12" font-weight="bold" fill="#37474f">感应功率柜</text>
+      <rect x="592" y="148" width="165" height="48" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.6"/>
+      <text x="674" y="176" text-anchor="middle" font-size="12" fill="#37474f">变频器</text>
+      <rect x="777" y="148" width="150" height="48" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.6"/>
+      <text x="852" y="176" text-anchor="middle" font-size="12" fill="#37474f">电容器</text>
+      <rect x="592" y="214" width="165" height="48" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.6"/>
+      <text x="674" y="242" text-anchor="middle" font-size="12" fill="#37474f">变压器</text>
+      <rect x="777" y="214" width="150" height="48" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.6"/>
+      <text x="852" y="242" text-anchor="middle" font-size="12" fill="#37474f">电抗器</text>
+
+      <!-- 冷却水母管与 4 支路 -->
+      <line x1="550" y1="375" x2="930" y2="375" stroke="#2980b9" stroke-width="2.5"/>
+      <text x="545" y="379" text-anchor="end" font-size="9.5" fill="#1f5fa8">冷却水进口</text>
+      <g stroke="#2980b9" stroke-width="2.2">
+        <line x1="635" y1="375" x2="635" y2="330"/>
+        <line x1="715" y1="375" x2="715" y2="330"/>
+        <line x1="815" y1="375" x2="815" y2="330"/>
+        <line x1="895" y1="375" x2="895" y2="330"/>
+      </g>
+      <g font-size="9" fill="#1f5fa8" text-anchor="middle">
+        <text x="635" y="392">变频器支路</text>
+        <text x="715" y="392">电容器支路</text>
+        <text x="815" y="392">变压器支路</text>
+        <text x="895" y="392">电抗器支路</text>
+      </g>
+
+      <!-- 冷却水箱与供水管路 -->
+      <path d="M 360 480 V 418 H 550 V 384" fill="none" stroke="#2980b9" stroke-width="2"/>
+      <polygon points="544,386 550,374 556,386" fill="#2980b9"/>
+      <rect x="305" y="480" width="110" height="65" rx="4" fill="#eaf2fb" stroke="#2980b9" stroke-width="1.6"/>
+      <rect x="305" y="508" width="110" height="37" fill="#d6eaf8"/>
+      <rect x="408" y="486" width="7" height="53" fill="#e8f4fc" stroke="#2980b9" stroke-width="1"/>
+      <rect x="408" y="508" width="7" height="31" fill="#8fc4e8"/>
+      <text x="360" y="560" text-anchor="middle" font-size="10.5" fill="#1f5fa8">冷却水箱</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>冷却支路</td><td>结垢/堵塞/流量不足</td><td>水质+小口径管路</td><td>功率单元过热</td></tr>
+      <tr><td>感应线圈</td><td>绝缘老化/匝间短路</td><td>高温+电磁振动</td><td>预热能力下降</td></tr>
+      <tr><td>功率单元</td><td>电容衰减/电抗器过热/变频器故障</td><td>电气老化</td><td>预热温度不足</td></tr>
+      <tr><td>温度控制</td><td>预热温度达不到</td><td>负载/水冷失配（静默失效）</td><td>交联度不足·质量后果</td></tr>
+      <tr><td>供水系统</td><td>水位/压力异常</td><td>补水与控制链路</td><td>间接过热停机</td></tr>
+    </table>
+    <p>示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙门收线机（含收线转盘·收线架）· 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 16/23 · 收放线系统</div>
+    <h1>龙门收线机（含收线转盘·收线架） <span class="sub">线末门式收线与盘具流转设备</span></h1>
+    <div class="badges">
+      <span>失效模式 ×5</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ======================= 1. 设备功能概述 ======================= -->
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>龙门收线机</b>位于线体末端，负责成品电缆的卷绕收线与盘具流转，是收放线系统（S10）的收线环节设备。</p>
+    <p>主要结构由<b>门式框架、地面横移轨道与台车、承载臂、收线转盘、收线架</b>及转盘驱动电机等组成。</p>
+    <p><b>两种收线方式均经收线转盘与收线架完成</b>；转盘以圆环滚道承载，长期处于<b>低速重载</b>工况。</p>
+    <p>工作方式以电气驱动、机械承载为主：转盘带动收线架旋转收线，横移机构（丝杠/导轨）完成排线与盘具横向转移。</p>
+    <p>上游承接冷却/牵引段产出的成品电缆，下游对接盘具转运与后工序。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备定位</div><div class="v">线末收线 · 盘具流转</div></div>
+      <div class="card"><div class="k">主要构成</div><div class="v">门架 · 横移轨道 · 承载臂 · 收线转盘 · 收线架</div></div>
+      <div class="card"><div class="k">收线方式</div><div class="v">两种收线方式均经收线转盘与收线架</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">电气驱动 · 机械承载（低速重载）</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游冷却/牵引 → 盘具转运</div></div>
+    </div>
+  </section>
+
+  <!-- ======================= 2. 结构示意图与可能的失效模式 ======================= -->
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 600" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="30" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">龙门收线机（收线工况）结构示意图</text>
+
+      <!-- 横移方向 -->
+      <line x1="300" y1="88" x2="600" y2="88" stroke="#546e7a" stroke-width="2.4"/>
+      <polygon points="300,88 314,81 314,95" fill="#546e7a"/>
+      <polygon points="600,88 586,81 586,95" fill="#546e7a"/>
+      <text x="450" y="72" text-anchor="middle" font-size="12" fill="#546e7a">横移排线</text>
+
+      <!-- 门式框架 -->
+      <rect x="150" y="110" width="570" height="28" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="170" y="138" width="30" height="367" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="640" y="138" width="30" height="367" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="255" y="129" font-size="12" fill="#546e7a">门式框架</text>
+
+      <!-- 地面横移轨道 + 台车 -->
+      <rect x="210" y="505" width="480" height="36" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="80" y="545" width="820" height="22" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="450" y="560" text-anchor="middle" font-size="11.5" fill="#546e7a">横移轨道 · 台车</text>
+
+      <!-- 电缆来向 -->
+      <path d="M 40 250 L 150 250 L 300 300 L 360 318" fill="none" stroke="#1565c0" stroke-width="4" opacity="0.8"/>
+      <polygon points="366,320 348,312 352,328" fill="#1565c0"/>
+      <text x="110" y="232" text-anchor="middle" font-size="12" fill="#1565c0">电缆来自上游冷却/牵引</text>
+
+      <!-- 收线转盘：大圆环 + 滚道示意 -->
+      <text x="450" y="178" text-anchor="middle" font-size="12.5" fill="#37474f">收线转盘（两种收线方式均经此完成）</text>
+      <circle cx="450" cy="330" r="130" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <circle cx="450" cy="330" r="112" fill="none" stroke="#90a4ae" stroke-width="1.6" stroke-dasharray="7 5"/>
+      <circle cx="562" cy="330" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="529.2" cy="250.8" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="450" cy="218" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="370.8" cy="250.8" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="338" cy="330" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="370.8" cy="409.2" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="450" cy="442" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <circle cx="529.2" cy="409.2" r="6" fill="#fff" stroke="#78909c" stroke-width="1.5"/>
+      <line x1="533" y1="247" x2="585" y2="205" stroke="#78909c" stroke-width="1.2"/>
+      <text x="590" y="201" font-size="10.5" fill="#78909c">滚动滚道（示意）</text>
+      <circle cx="450" cy="330" r="75" fill="none" stroke="#1565c0" stroke-width="22" opacity="0.3"/>
+      <line x1="300" y1="330" x2="600" y2="330" stroke="#37474f" stroke-width="4"/>
+      <polygon points="318,318 318,342 298,330" fill="#455a64"/>
+      <polygon points="582,318 582,342 602,330" fill="#455a64"/>
+      <circle cx="450" cy="330" r="38" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="450" y="334" text-anchor="middle" font-size="11" fill="#37474f">筒体/轮毂</text>
+
+      <!-- 承载臂 -->
+      <rect x="600" y="304" width="44" height="10" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <rect x="600" y="346" width="44" height="10" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="622" y="294" text-anchor="middle" font-size="11" fill="#546e7a">承载臂</text>
+
+      <!-- 转盘轴承座 -->
+      <rect x="428" y="458" width="46" height="16" fill="#dfe6ee" stroke="#37474f" stroke-width="1.8"/>
+
+      <!-- 转盘驱动电机 + 馈线 -->
+      <rect x="270" y="430" width="88" height="32" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <circle cx="368" cy="446" r="10" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="314" y="420" text-anchor="middle" font-size="11" fill="#37474f">转盘驱动电机</text>
+      <line x1="270" y1="452" x2="216" y2="472" stroke="#2980b9" stroke-width="2"/>
+      <text x="150" y="498" text-anchor="middle" font-size="10.5" fill="#5d6d7e">馈线</text>
+
+      <!-- 收线架 -->
+      <rect x="705" y="286" width="164" height="16" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="715" y="302" width="14" height="168" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <rect x="845" y="302" width="14" height="168" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="705" y1="380" x2="865" y2="380" stroke="#37474f" stroke-width="3"/>
+      <circle cx="785" cy="380" r="55" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <circle cx="785" cy="380" r="36" fill="none" stroke="#1565c0" stroke-width="12" opacity="0.3"/>
+      <rect x="698" y="364" width="16" height="30" fill="#dfe6ee" stroke="#37474f" stroke-width="1.8"/>
+      <rect x="856" y="364" width="16" height="30" fill="#dfe6ee" stroke="#37474f" stroke-width="1.8"/>
+      <text x="785" y="495" text-anchor="middle" font-size="11.5" fill="#546e7a">收线架（承托盘具）</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>收线转盘轴承</td><td>润滑劣化→卡死</td><td>低速重载+冲击</td><td>收线中断（退化人工不可见）</td></tr>
+      <tr><td>收线架轴承</td><td>同类磨损链</td><td>承载循环</td><td>流转卡阻</td></tr>
+      <tr><td>横移丝杠/导轨</td><td>磨损·间隙</td><td>往复载荷</td><td>定位失准</td></tr>
+      <tr><td>承载臂/摩擦轮</td><td>打滑·压紧失效</td><td>盘具重量变化</td><td>收线张力异常</td></tr>
+      <tr><td>排线机构</td><td>故障</td><td>节距控制失配</td><td>盘具堆放质量差</td></tr>
+    </table>
+
+    <p style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+
+</body>
+</html>

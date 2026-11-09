@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>剥布机 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 22/23 · 线体辅助</div>
+  <h1>剥布机 <span class="sub">线端辅助工位 · 磁粉离合器提供可控张力与退绕阻尼</span></h1>
+  <div class="badges">
+    <span>失效模式 ×4</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>剥布机为<b>线端辅助工位</b>，用于剥离并退绕护套外的布带/脱模布。</p>
+    <p>布置于线端工序链中，与上下游绕包及后化工位衔接，随线连续运行。</p>
+    <p>关键结构由<b>放卷/收卷轴、磁粉离合器、驱动电机与剥除刀工位</b>组成。</p>
+    <p>工作方式以机械传动为主：驱动电机经传动带动卷轴，<b>磁粉离合器</b>提供可控张力与退绕阻尼。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备属性</div><div class="v">线端辅助工位（S14 线体辅助）</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">线端 · 与绕包/后化工位衔接</div></div>
+      <div class="card"><div class="k">关键结构</div><div class="v">放卷/收卷轴＋磁粉离合器＋驱动电机＋剥除刀</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">机械传动＋磁粉离合器可控张力</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">承接绕包工序 · 服务线端连续运行</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 500" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">剥布机结构示意 · 放卷/收卷轴 · 磁粉离合器 · 驱动电机 · 剥除刀工位</text>
+
+      <!-- 电缆穿行 -->
+      <line x1="40" y1="270" x2="922" y2="270" stroke="#1565c0" stroke-width="5"/>
+      <polygon points="922,263 940,270 922,277" fill="#1565c0"/>
+      <text x="52" y="292" font-size="10.5" fill="#1565c0">电缆穿行（布带/脱模布绕包在外）</text>
+      <text x="930" y="256" text-anchor="end" font-size="10.5" fill="#1565c0">去下游工序</text>
+
+      <!-- 放卷轴（布带卷） -->
+      <circle cx="150" cy="130" r="58" fill="#f5f7fa" stroke="#546e7a" stroke-width="2.2"/>
+      <circle cx="150" cy="130" r="36" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
+      <circle cx="150" cy="130" r="10" fill="#fff" stroke="#546e7a" stroke-width="2"/>
+      <text x="150" y="212" text-anchor="middle" font-size="11" fill="#37474f">放卷轴（布带卷）</text>
+
+      <!-- 收卷轴（废布卷） -->
+      <circle cx="830" cy="130" r="46" fill="#f5f7fa" stroke="#546e7a" stroke-width="2.2"/>
+      <circle cx="830" cy="130" r="26" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
+      <circle cx="830" cy="130" r="8" fill="#fff" stroke="#546e7a" stroke-width="2"/>
+      <text x="830" y="200" text-anchor="middle" font-size="11" fill="#37474f">收卷轴（废布卷）</text>
+
+      <!-- 布带走线（虚线示意） -->
+      <path d="M 185 172 Q 330 232 466 262" fill="none" stroke="#8d6e63" stroke-width="2.4" stroke-dasharray="9 6"/>
+      <text x="300" y="215" font-size="10" fill="#8d6e63">布带走线（示意）</text>
+      <path d="M 494 262 Q 660 232 798 178" fill="none" stroke="#8d6e63" stroke-width="2" stroke-dasharray="9 6" opacity="0.75"/>
+      <text x="668" y="228" font-size="10" fill="#8d6e63">废布收卷（示意）</text>
+
+      <!-- 剥除刀工位 -->
+      <polygon points="470,266 480,240 490,266" fill="#cfd8e3" stroke="#37474f" stroke-width="1.8"/>
+      <text x="480" y="318" text-anchor="middle" font-size="11" fill="#37474f">剥除刀工位</text>
+
+      <!-- 磁粉离合器 -->
+      <rect x="420" y="370" width="150" height="86" rx="8" fill="#f5f7fa" stroke="#37474f" stroke-width="2.4"/>
+      <circle cx="455" cy="413" r="15" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <circle cx="505" cy="413" r="15" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <text x="495" y="478" text-anchor="middle" font-size="11" fill="#37474f" font-weight="bold">磁粉离合器</text>
+
+      <!-- 驱动电机 + 轴 -->
+      <rect x="620" y="370" width="140" height="86" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="2.4"/>
+      <rect x="640" y="392" width="76" height="42" rx="5" fill="#fff" stroke="#37474f" stroke-width="1.8"/>
+      <line x1="570" y1="413" x2="620" y2="413" stroke="#37474f" stroke-width="3.5"/>
+      <text x="690" y="478" text-anchor="middle" font-size="11" fill="#37474f" font-weight="bold">驱动电机</text>
+
+      <!-- 传动（示意） -->
+      <path d="M 690 370 L 690 336 L 830 336 L 830 180" fill="none" stroke="#546e7a" stroke-width="1.8" stroke-dasharray="6 4"/>
+      <text x="752" y="328" text-anchor="middle" font-size="9.5" fill="#5d6d7e">传动（示意）</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>磁粉离合器</td><td>打滑→滑差发热→磁粉/线圈老化</td><td>摩擦副循环劣化</td><td>张力失控（壳温是该机理最直接可观测量）</td></tr>
+      <tr><td>张力控制</td><td>失稳</td><td>离合器老化+控制链路</td><td>剥布质量差·断线</td></tr>
+      <tr><td>驱动机构</td><td>轴承磨损</td><td>机械疲劳</td><td>异响与卡阻</td></tr>
+      <tr><td>刀具/导轮</td><td>磨损</td><td>接触磨损</td><td>剥除深度异常</td></tr>
+    </table>
+
+    <p class="small" style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

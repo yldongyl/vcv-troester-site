@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>氮气制备与净化 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 06/23 · 氮气制备与净化系统</div>
+  <h1>氮气制备与净化 <span class="sub">制氮机（氮气站）供全线及管段N₂ · 过渡段副产物净化</span></h1>
+  <div class="badges">
+    <span>失效模式 ×5</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>氮气制备与净化由现场后加装的制氮机（氮气站）与挂接于硫化管过渡段管路上的副产物净化装置组成，是全线氮气的制备、储备与供气单元（S5 氮气）。</p>
+    <p>关键结构组成：制氮主机（膜组/吸附塔分离单元，含主电机与压缩机）、氮气储罐、管廊引入管路，以及净化装置（静电/常规式）。</p>
+    <p>工作方式（气/机械）：原料空气经压缩与分离制出氮气，储罐缓冲稳压后，经管廊引入线输送至 VCV 塔硫化管及各车间用气点。</p>
+    <p>净化装置位于过渡管段，对循环氮气在线过滤交联副产物后回送；下游关联 S3 硫化管氮气固化与工艺用气。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备构成</div><div class="v">制氮机（氮气站）＋ 过渡段副产物净化装置</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">S5 氮气 · 为硫化管固化与全线工艺用气供 N₂</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">空气压缩分离制氮 · 储罐缓冲 · 管廊引入供气</div></div>
+      <div class="card"><div class="k">关键结构</div><div class="v">制氮主机（膜组/吸附塔＋主电机/压缩机）· 储罐 · 管路 · 净化装置</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">净化装置挂接过渡段管路 · 下游为 S3 硫化管及车间用气点</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 600" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">氮气站 · 管廊引入线 · 过渡段副产物净化装置 示意（非按比例）</text>
+
+      <!-- 地面 -->
+      <line x1="30" y1="530" x2="950" y2="530" stroke="#37474f" stroke-width="2"/>
+
+      <!-- ===== 左：氮气站（后加装） ===== -->
+      <rect x="40" y="80" width="330" height="430" rx="8" fill="#f5f7fa" stroke="#90a4ae" stroke-width="1.6"/>
+      <text x="205" y="102" text-anchor="middle" font-size="12.5" fill="#37474f">氮气站（现场后加装）</text>
+
+      <!-- 原料空气入口 -->
+      <line x1="8" y1="330" x2="70" y2="330" stroke="#546e7a" stroke-width="2"/>
+      <polygon points="64,324 76,330 64,336" fill="#546e7a"/>
+      <text x="14" y="318" font-size="10" fill="#5d6d7e">原料空气</text>
+
+      <!-- 制氮主机 -->
+      <rect x="70" y="240" width="140" height="170" rx="6" fill="#e8f0fb" stroke="#37474f" stroke-width="2"/>
+      <rect x="88" y="258" width="28" height="134" rx="14" fill="#fff" stroke="#546e7a" stroke-width="1.6"/>
+      <rect x="126" y="258" width="28" height="134" rx="14" fill="#fff" stroke="#546e7a" stroke-width="1.6"/>
+      <rect x="166" y="330" width="36" height="48" rx="4" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
+      <text x="140" y="432" text-anchor="middle" font-size="12" fill="#37474f">制氮主机（含主电机/压缩机）</text>
+
+      <!-- 主机→储罐 -->
+      <line x1="210" y1="280" x2="244" y2="280" stroke="#37474f" stroke-width="4"/>
+
+      <!-- 氮气储罐 -->
+      <rect x="244" y="210" width="96" height="210" rx="30" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="292" y="315" text-anchor="middle" font-size="11.5" fill="#37474f">氮气储罐</text>
+
+      <!-- 储罐→引入管 -->
+      <line x1="340" y1="320" x2="420" y2="320" stroke="#37474f" stroke-width="5"/>
+
+      <!-- ===== 右：管廊引入线到塔/车间 ===== -->
+      <line x1="420" y1="320" x2="880" y2="320" stroke="#37474f" stroke-width="5"/>
+      <rect x="420" y="332" width="470" height="9" fill="#cfd8dc" stroke="#90a4ae" stroke-width="1.2"/>
+      <rect x="500" y="341" width="9" height="189" fill="#cfd8dc" stroke="#90a4ae" stroke-width="1.2"/>
+      <rect x="730" y="341" width="9" height="189" fill="#cfd8dc" stroke="#90a4ae" stroke-width="1.2"/>
+      <polygon points="800,313 814,320 800,327" fill="#27ae60"/>
+      <text x="770" y="310" font-size="10" fill="#1e7e34">氮气流向</text>
+      <text x="640" y="360" text-anchor="middle" font-size="10" fill="#5d6d7e">管廊引入线</text>
+
+      <!-- 副产物净化装置（挂在管段上） -->
+      <line x1="580" y1="320" x2="580" y2="378" stroke="#1e7e34" stroke-width="3"/>
+      <line x1="700" y1="320" x2="700" y2="378" stroke="#1e7e34" stroke-width="3"/>
+      <text x="566" y="350" font-size="9.5" fill="#5d6d7e">进</text>
+      <text x="706" y="350" font-size="9.5" fill="#5d6d7e">出</text>
+      <rect x="546" y="378" width="170" height="112" rx="8" fill="#eef7f0" stroke="#1e7e34" stroke-width="2.2"/>
+      <text x="631" y="410" text-anchor="middle" font-size="12" fill="#1e7e34">副产物净化装置</text>
+      <text x="631" y="434" text-anchor="middle" font-size="10" fill="#5d6d7e">硫化管过渡段 · 过滤交联副产物</text>
+      <line x1="576" y1="490" x2="576" y2="530" stroke="#37474f" stroke-width="2.4"/>
+      <line x1="686" y1="490" x2="686" y2="530" stroke="#37474f" stroke-width="2.4"/>
+
+      <!-- 车间/塔 -->
+      <rect x="880" y="140" width="72" height="390" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="916" y="170" text-anchor="middle" font-size="11" fill="#37474f">VCV 塔</text>
+      <text x="916" y="188" text-anchor="middle" font-size="10" fill="#5d6d7e">硫化管及</text>
+      <text x="916" y="204" text-anchor="middle" font-size="10" fill="#5d6d7e">车间用气点</text>
+      <polygon points="872,313 884,320 872,327" fill="#37474f"/>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>制氮主机</td><td>膜组/吸附塔劣化</td><td>分离元件老化</td><td>纯度漂移→硫化质量风险</td></tr>
+      <tr><td>压缩机/风机</td><td>轴承磨损/电机劣化</td><td>启停与长运转疲劳</td><td>制氮能力下降</td></tr>
+      <tr><td>储罐与管路</td><td>泄漏</td><td>接头与阀件老化</td><td>氮气消耗异常·压力跌落</td></tr>
+      <tr><td>净化装置</td><td>滤芯堵塞/电极失效</td><td>副产物积聚</td><td>管段洁净度下降</td></tr>
+      <tr><td>全站</td><td>意外停机</td><td>电气或控制故障</td><td>氮气中断＝全线停产（高后果单点）</td></tr>
+    </table>
+
+    <p style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

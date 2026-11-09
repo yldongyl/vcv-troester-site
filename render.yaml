@@ -1,0 +1,14 @@
+# Render Blueprint —— VCV 设备功能与失效模式视图（纯静态站点）
+# 推送到 GitHub/GitLab 后，在 Render 上 "New → Blueprint" 连接仓库即可按此配置自动创建。
+services:
+  - type: static
+    name: vcv-troester-site
+    repo: https://github.com/yldongyl/vcv-troester-site.git   # 创建仓库后填上真实地址，或删掉此行改用 dashboard 手动连接
+    env: production
+    plan: free
+    static:
+      publishPath: "."
+      headers:
+        - path: /*
+          name: Cache-Control
+          value: public, max-age=300

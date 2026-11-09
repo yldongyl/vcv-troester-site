@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>设备功能与失效模式视图 · 总览 | 南海海缆VCV线</title>
+<style>
+  :root{--c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+  .container{max-width:1240px;margin:0 auto;padding:0 20px 40px;}
+  header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:32px 20px 24px;}
+  header.page .inner{max-width:1240px;margin:0 auto;}
+  .series{font-size:13px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+  h1{font-size:26px;margin-bottom:10px;}
+  .sub{font-size:14.5px;opacity:.85;}
+  section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+  h2{font-size:19px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+  th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+  td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+  tr:nth-child(even) td{background:#fafbfd;}
+  a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+  a:hover{text-decoration:underline;}
+  .flow{display:flex;flex-direction:column;gap:2px;font-size:13px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:14px 20px;}
+  .flow .stage{font-weight:700;color:var(--c-head2);margin-top:8px;}
+  .flow .node{padding:2px 0 2px 18px;}
+  .flow .arrow{color:#90a4ae;padding-left:18px;}
+  .num{font-size:14px;font-weight:700;color:var(--c-head2);}
+  .small{font-size:12.5px;color:var(--c-sub);}
+  footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+  @media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <div class="series">南海海缆 VCV 线 · 预测性维护 · 设备功能基线</div>
+    <h1>设备功能与失效模式视图 · 总览</h1>
+    <div class="sub">23 台设备逐台整理：功能概述、结构组成与工艺位置、该类设备的行业通用失效模式清单。<br>
+    <b>本版不含测点方案</b>——测点将在此功能基线上另行逐项确认追加。</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>产线工艺链与设备页导航</h2>
+    <div class="flow">
+      <div class="stage">【线端 · 放线】</div>
+      <div class="node"><a href="15_龙门放线机.html">15 龙门放线机</a> → <a href="17_导体浮动轮.html">17 导体浮动轮</a> → <a href="13_储线器.html">13 储线器</a> · <a href="14_转向轮.html">14 转向轮</a></div>
+      <div class="arrow">↓</div>
+      <div class="stage">【挤出成型段】</div>
+      <div class="node"><a href="02_加料系统.html">02 加料系统</a> → <a href="05_导体预热装置.html">05 导体预热</a> → <a href="01_挤出机_三层共挤.html">01 三层共挤挤出机（内屏/绝缘/外屏 ×3）</a> + <a href="03_模温机TCU.html">03 模温机</a></div>
+      <div class="arrow">↓</div>
+      <div class="stage">【交联硫化段】</div>
+      <div class="node"><a href="04_硫化管加热系统.html">04 硫化管加热</a> → <a href="06_氮气制备与净化.html">06 氮气制备与净化</a> + <a href="08_端部密封.html">08 端部密封</a>（<a href="07_液压站.html">07 液压站</a> 驱动）→ <a href="18_回转仓.html">18 回转仓</a> → <a href="09_水冷却系统.html">09 水冷却</a></div>
+      <div class="arrow">↓</div>
+      <div class="stage">【牵引 · 收线】</div>
+      <div class="node"><a href="10_上牵引.html">10 上牵引</a> → <a href="11_辅助牵引.html">11 辅助牵引</a> → <a href="12_下牵引.html">12 下牵引</a> → <a href="22_剥布机.html">22 剥布机</a> → <a href="23_绕包机.html">23 绕包机</a> → <a href="16_龙门收线机.html">16 龙门收线机（含收线转盘/收线架）</a></div>
+      <div class="arrow">── 贯穿全线 ──</div>
+      <div class="node"><a href="19_线控电气系统.html">19 线控与电气系统</a> · <a href="20_测偏仪.html">20 测偏仪</a> · <a href="21_凹凸仪.html">21 凹凸仪</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>23 台设备 · 功能与失效模式一览</h2>
+    <table>
+      <tr><th>设备页</th><th>系统</th><th>功能一句话</th><th>重点失效模式（行业通用）</th><th>失效模式</th></tr>
+      <tr><td><a href="01_挤出机_三层共挤.html">01 三层共挤挤出机</a></td><td>S1 挤出塑化</td><td>三层塑化挤出动力，三台并列供十字机头</td><td>齿轮箱磨损 · 电机散热失效 · 加热区失控</td><td class="num">6</td></tr>
+      <tr><td><a href="02_加料系统.html">02 加料系统</a></td><td>S1 挤出塑化</td><td>颗粒料干燥+真空输送+料仓喂料</td><td>干燥失准 · 管路堵塞 · 计量漂移</td><td class="num">4</td></tr>
+      <tr><td><a href="03_模温机TCU.html">03 模温机（TCU）</a></td><td>S2 温控介质</td><td>机筒/机头液温控单元，多独立温控区供热恒温</td><td>循环泵劣化 · 加热回路失控 · 渗漏失压</td><td class="num">5</td></tr>
+      <tr><td><a href="04_硫化管加热系统.html">04 硫化管加热系统</a></td><td>S3 交联固化</td><td>绝缘交联高温高压管段，分区电阻加热+N2冷却</td><td>区段加热回路失效 · 局部过热 · 冷却风机失效</td><td class="num">5</td></tr>
+      <tr><td><a href="05_导体预热装置.html">05 导体预热装置</a></td><td>S4 导体预热</td><td>挤出前导体感应预热，功率单元多支路水冷</td><td>冷却支路堵塞 · 线圈老化 · 预热不足（静默）</td><td class="num">5</td></tr>
+      <tr><td><a href="06_氮气制备与净化.html">06 氮气制备与净化</a></td><td>S5 氮气</td><td>制氮机供全线N2；净化装置过滤交联副产物</td><td>纯度漂移 · 主机劣化 · 管路泄漏 · 停机即全线停产</td><td class="num">5</td></tr>
+      <tr><td><a href="07_液压站.html">07 液压站</a></td><td>S6 端封液压</td><td>端封/接头箱液压动作动力源</td><td>泵磨损内泄 · 蓄能器失效 · 渗漏失压</td><td class="num">5</td></tr>
+      <tr><td><a href="08_端部密封.html">08 端部密封</a></td><td>S6 端封液压</td><td>管段两端液压密封屏障（气封+水封）</td><td>密封件磨损 · 液压保压失效→密封瞬移 · 换型装配风险</td><td class="num">5</td></tr>
+      <tr><td><a href="09_水冷却系统.html">09 水冷却系统</a></td><td>S7 冷却</td><td>冷却管段水/气冷却回路（泵×2+水箱+换热）</td><td>泵干运行 · 结垢堵塞 · 水质→换热下降</td><td class="num">5</td></tr>
+      <tr><td><a href="10_上牵引.html">10 上牵引</a></td><td>S8 牵引制动</td><td>塔顶主牵引+制动单元，线体唯一牵引</td><td>轴承/齿轮磨损→抖动 · 皮带打滑 · 制动衰退→溜线</td><td class="num">6</td></tr>
+      <tr><td><a href="11_辅助牵引.html">11 辅助牵引</a></td><td>S8 牵引制动</td><td>线体中部带式夹持牵引，配合主牵引</td><td>皮带磨损打滑 · 张紧漂移 · 速度同步异常</td><td class="num">4</td></tr>
+      <tr><td><a href="12_下牵引.html">12 下牵引</a></td><td>S8 牵引制动</td><td>塔下驱动牵引，与上牵引协同建立线张力</td><td>电机跳停 · 传动轴承磨损 · 表计未接入</td><td class="num">4</td></tr>
+      <tr><td><a href="13_储线器.html">13 储线器</a></td><td>S9 储线张力</td><td>塔内立式储线（恒张力、行程约25m），补偿速度差</td><td>张力失稳 · 小车行程异常 · 导向轮磨损</td><td class="num">4</td></tr>
+      <tr><td><a href="14_转向轮.html">14 转向轮</a></td><td>S9 储线张力</td><td>储线段小车换向轮系，塔内高空</td><td>轴承缺脂卡滞 · 齿形带跳齿 · 高空维护不便</td><td class="num">4</td></tr>
+      <tr><td><a href="15_龙门放线机.html">15 龙门放线机</a></td><td>S10 收放线</td><td>地面门式放线（横移、张力与dancer控制）</td><td>线盘张力失控 · dancer失准 · 横移卡阻</td><td class="num">4</td></tr>
+      <tr><td><a href="16_龙门收线机.html">16 龙门收线机</a></td><td>S10 收放线</td><td>门式收线+盘具流转（含收线转盘/收线架）</td><td>低速重载轴承卡死 · 承载臂打滑 · 排线失准</td><td class="num">5</td></tr>
+      <tr><td><a href="17_导体浮动轮.html">17 导体浮动轮</a></td><td>S10 收放线</td><td>导体放线端dancer轮+气动比例阀恒张力</td><td>比例阀漂移 · 气缸内泄 · 轮轴承磨损</td><td class="num">4</td></tr>
+      <tr><td><a href="18_回转仓.html">18 回转仓</a></td><td>S11 压力容器</td><td>塔顶回转压力容器：180°换向+维持腔压（涉压）</td><td>回转支撑滚道疲劳 · 密封渗漏→腔压失稳（⛔安全评审）</td><td class="num">4</td></tr>
+      <tr><td><a href="19_线控电气系统.html">19 线控与电气系统</a></td><td>S12 线控电气</td><td>全线PLC/工控机、现场总线、电控柜与人机接口</td><td>柜内电源热点跳闸 · 电能质量扰动 · 通讯链路异常</td><td class="num">5</td></tr>
+      <tr><td><a href="20_测偏仪.html">20 测偏仪</a></td><td>S13 在线测量</td><td>绝缘三层同心度/壁厚在线测量（第三方设备）</td><td>X射线管老化 · 信号冻结 · 铅帘磨损</td><td class="num">5</td></tr>
+      <tr><td><a href="21_凹凸仪.html">21 凹凸仪</a></td><td>S13 在线测量</td><td>绝缘冷态外径与表面凹凸在线检测（第三方设备）</td><td>镜头污染 · 标定漂移 · 计数冻结</td><td class="num">4</td></tr>
+      <tr><td><a href="22_剥布机.html">22 剥布机</a></td><td>S14 线体辅助</td><td>线端辅助工位，磁粉离合器可控张力</td><td>离合器打滑发热 · 张力失控 · 刀具磨损</td><td class="num">4</td></tr>
+      <tr><td><a href="23_绕包机.html">23 绕包机</a></td><td>S14 线体辅助</td><td>线端绕包工位（带/线绕包与张力控制）</td><td>张力/制动单元衰退 · 绕包头轴承磨损 · 供带卡滞</td><td class="num">4</td></tr>
+    </table>
+    <p class="small">示意图依据设备资料绘制，非按比例；失效模式为该类设备的行业通用清单，不含特定产线故障统计；具体设备的重点失效项与测点方案将在后续确认中逐项圈定。</p>
+  </section>
+
+</div>
+
+<footer>
+  南海海缆 VCV 线 · 设备功能与失效模式视图 · 23 个设备页 + 本总览<br>
+  设备功能基线版 · 测点方案后续追加确认
+</footer>
+
+</body>
+</html>

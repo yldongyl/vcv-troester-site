@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>绕包机 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 23/23 · 线体辅助</div>
+    <h1>绕包机 <span class="sub">线端绕包工位 · 带/线绕包与张力控制</span></h1>
+    <div class="badges">
+      <span>失效模式 ×4</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ======================= 1. 设备功能概述 ======================= -->
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>绕包机</b>为线端绕包工位，属线体辅助环节（S14），负责以带材/线材对缆芯进行螺旋绕包。</p>
+    <p>主要结构由<b>绕包头、放带盘、张力/制动单元、绕包头驱动电机</b>组成，缆芯从绕包头中心穿行连续向前。</p>
+    <p>工作方式以机械为主：放带盘引出绕包带，张力/制动单元提供放带阻尼与停机抱闸以维持稳定绕包张力，驱动电机带动盘式绕包头旋转完成绕包。</p>
+    <p>上游承接剥布后的缆芯，下游对接龙门收线工位。</p>
+    <div class="cards">
+      <div class="card"><div class="k">工艺位置</div><div class="v">线端辅助 · 收线前绕包工位</div></div>
+      <div class="card"><div class="k">主要构成</div><div class="v">绕包头 · 放带盘 · 张力/制动单元 · 驱动电机</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">机械绕包 · 放带阻尼 · 停机抱闸</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游剥布机 → 下游龙门收线机</div></div>
+    </div>
+  </section>
+
+  <!-- ======================= 2. 结构示意图与可能的失效模式 ======================= -->
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 470" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="26" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">绕包机（线端绕包工位）结构示意图</text>
+
+      <!-- 缆芯穿行 -->
+      <line x1="30" y1="320" x2="910" y2="320" stroke="#1565c0" stroke-width="6" opacity="0.85"/>
+      <text x="80" y="352" text-anchor="middle" font-size="11.5" fill="#1565c0">来自上游</text>
+      <text x="878" y="352" text-anchor="middle" font-size="11.5" fill="#1565c0">去下游</text>
+
+      <!-- 绕包后的带层 -->
+      <line x1="600" y1="320" x2="910" y2="320" stroke="#8d6e63" stroke-width="12" opacity="0.5"/>
+      <g stroke="#6d4c41" stroke-width="1.4" opacity="0.8">
+        <line x1="618" y1="313" x2="630" y2="327"/>
+        <line x1="654" y1="313" x2="666" y2="327"/>
+        <line x1="690" y1="313" x2="702" y2="327"/>
+        <line x1="726" y1="313" x2="738" y2="327"/>
+        <line x1="762" y1="313" x2="774" y2="327"/>
+        <line x1="798" y1="313" x2="810" y2="327"/>
+        <line x1="834" y1="313" x2="846" y2="327"/>
+        <line x1="870" y1="313" x2="882" y2="327"/>
+      </g>
+      <text x="755" y="292" text-anchor="middle" font-size="10.5" fill="#6d4c41">绕包带螺旋绕包后的缆芯</text>
+
+      <!-- 放带盘 -->
+      <circle cx="180" cy="128" r="52" fill="#f5f7fa" stroke="#37474f" stroke-width="2.4"/>
+      <circle cx="180" cy="128" r="30" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <circle cx="180" cy="128" r="9" fill="#fff" stroke="#37474f" stroke-width="2"/>
+      <text x="180" y="200" text-anchor="middle" font-size="12" fill="#37474f">放带盘（绕包带）</text>
+
+      <!-- 带材走线：盘→张力/制动单元→绕包头 -->
+      <path d="M 180 180 L 180 250" fill="none" stroke="#8d6e63" stroke-width="2.4"/>
+      <path d="M 256 275 L 440 275 L 458 296" fill="none" stroke="#8d6e63" stroke-width="2.4"/>
+      <text x="348" y="264" text-anchor="middle" font-size="10.5" fill="#8d6e63">带材走线</text>
+
+      <!-- 张力/制动单元 -->
+      <rect x="104" y="250" width="152" height="50" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="2.2"/>
+      <text x="180" y="272" text-anchor="middle" font-size="12" fill="#37474f" font-weight="bold">张力 / 制动单元</text>
+      <text x="180" y="290" text-anchor="middle" font-size="10" fill="#5d6d7e">放带阻尼 · 停机抱闸</text>
+
+      <!-- 绕包头（旋转盘式） -->
+      <ellipse cx="480" cy="320" rx="28" ry="90" fill="#eceff1" stroke="#37474f" stroke-width="2.6"/>
+      <ellipse cx="528" cy="320" rx="28" ry="90" fill="#eceff1" stroke="#37474f" stroke-width="2.6"/>
+      <path d="M 480 230 A 48 20 0 0 1 528 230" fill="none" stroke="#90a4ae" stroke-width="1.8"/>
+      <path d="M 480 410 A 48 20 0 0 0 528 410" fill="none" stroke="#90a4ae" stroke-width="1.8"/>
+      <text x="504" y="440" text-anchor="middle" font-size="12" fill="#37474f">绕包头（旋转盘式）</text>
+
+      <!-- 驱动电机 -->
+      <rect x="636" y="386" width="140" height="50" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="2.2"/>
+      <rect x="654" y="400" width="72" height="22" rx="4" fill="#fff" stroke="#37474f" stroke-width="1.8"/>
+      <text x="706" y="454" text-anchor="middle" font-size="11.5" fill="#37474f">绕包头驱动电机</text>
+      <path d="M 664 386 L 600 360 L 556 344" fill="none" stroke="#37474f" stroke-width="2"/>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>制动/张力单元</td><td>滑差发热/衰退</td><td>与磁粉类同机理</td><td>搭接不均·张力波动</td></tr>
+      <tr><td>绕包头轴承</td><td>磨损</td><td>高速旋转</td><td>绕包节距失准</td></tr>
+      <tr><td>供带机构</td><td>卡滞/松带</td><td>张力链异常</td><td>外观质量缺陷</td></tr>
+      <tr><td>换卷</td><td>接头失效</td><td>人工窗口</td><td>停机重接</td></tr>
+    </table>
+
+    <p style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+
+</body>
+</html>

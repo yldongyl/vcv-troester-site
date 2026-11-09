@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>上牵引（塔顶牵引制动单元）· 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 10/23 · 牵引/制动系统</div>
+    <h1>上牵引 <span class="sub">— 塔顶主牵引与制动单元 · 线体唯一牵引、无旁路冗余</span></h1>
+    <div class="badges">
+      <span>失效模式 ×6</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>上牵引为 VCV 塔顶的主牵引制动单元，是全线唯一牵引动力，无旁路冗余。结构由<b>牵引轮与夹持皮带环、行星齿轮箱、主驱动电机、气动张紧装置、制动装置、测量轮</b>组成。主驱动电机经行星齿轮箱驱动牵引轮旋转，皮带环夹持电缆实现牵引入塔与向上输送；气缸张紧提供恒定夹持张力，摩擦式制动装置承担保持与安全制动；测量轮随缆转动输出线速度基准。电缆自下方硫化管/回转仓方向进入，经牵引轮 180° 换向后下行去储线器/收线段。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备构成</div><div class="v">牵引轮/皮带环 · 行星齿轮箱 · 驱动电机 · 气动张紧 · 制动 · 测量轮</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">S8 牵引制动 · VCV 塔顶</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">变频交流电机驱动 · 气动张紧 · 摩擦制动</div></div>
+      <div class="card"><div class="k">冗余状态</div><div class="v">线体唯一牵引 · 无旁路冗余</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游：硫化管/回转仓 · 下游：储线器/收线</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 660" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="34" text-anchor="middle" font-size="16" fill="#2c3e50" font-weight="bold">塔顶牵引制动单元 结构示意图</text>
+      <text x="490" y="56" text-anchor="middle" font-size="12" fill="#5d6d7e">牵引轮 · 皮带环 · 行星齿轮箱 · 主驱动电机 · 气动张紧 · 制动单元 · 测量轮</text>
+
+      <!-- 底座/直线导轨 -->
+      <rect x="90" y="600" width="800" height="24" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="110" y1="612" x2="870" y2="612" stroke="#90a4ae" stroke-width="2" stroke-dasharray="14 6"/>
+      <text x="490" y="646" text-anchor="middle" font-size="12" fill="#546e7a">直线导轨 — 可调整至电缆中心线</text>
+
+      <!-- 支架与支撑柱 -->
+      <rect x="400" y="540" width="80" height="60" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="440" y1="443" x2="440" y2="540" stroke="#607d8b" stroke-width="6"/>
+
+      <!-- 电缆路径（左进右出） -->
+      <path d="M 284 584 L 284 285 A 156 156 0 0 1 596 285 L 596 584" fill="none" stroke="#1565c0" stroke-width="5" opacity="0.85"/>
+      <text x="252" y="340" text-anchor="middle" font-size="12.5" fill="#1565c0">电缆上行</text>
+      <text x="252" y="357" text-anchor="middle" font-size="11" fill="#5d6d7e">（来自硫化管/回转仓）</text>
+      <text x="648" y="340" text-anchor="middle" font-size="12.5" fill="#1565c0">电缆下行</text>
+      <text x="648" y="357" text-anchor="middle" font-size="11" fill="#5d6d7e">（去储线器/收线）</text>
+
+      <!-- 牵引轮 + 皮带环 -->
+      <circle cx="440" cy="285" r="156" fill="none" stroke="#455a64" stroke-width="13"/>
+      <text x="440" y="134" text-anchor="middle" font-size="10.5" fill="#fff" font-weight="bold">皮带环</text>
+      <circle cx="440" cy="285" r="140" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <g stroke="#b0bec5" stroke-width="1.6">
+        <line x1="440" y1="155" x2="440" y2="240"/><line x1="440" y1="330" x2="440" y2="415"/>
+        <line x1="310" y1="285" x2="395" y2="285"/><line x1="485" y1="285" x2="570" y2="285"/>
+      </g>
+      <text x="440" y="196" text-anchor="middle" font-size="13" fill="#37474f">牵引轮</text>
+
+      <!-- 行星齿轮箱（中央驱动） -->
+      <line x1="440" y1="452" x2="440" y2="333" stroke="#37474f" stroke-width="4"/>
+      <circle cx="440" cy="285" r="44" fill="#fff8e1" stroke="#37474f" stroke-width="2.5"/>
+      <circle cx="440" cy="285" r="17" fill="#ffe082" stroke="#37474f" stroke-width="2"/>
+      <g fill="#37474f">
+        <rect x="436" y="235" width="8" height="9"/><rect x="436" y="326" width="8" height="9"/>
+        <rect x="390" y="281" width="9" height="8"/><rect x="481" y="281" width="9" height="8"/>
+      </g>
+      <text x="440" y="272" text-anchor="middle" font-size="11.5" fill="#6d4c41">行星齿轮箱</text>
+      <text x="440" y="308" text-anchor="middle" font-size="10.5" fill="#6d4c41">无背隙</text>
+
+      <!-- 主驱动电机 -->
+      <rect x="398" y="452" width="84" height="86" rx="6" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="440" y="492" text-anchor="middle" font-size="12" fill="#37474f">主驱动电机</text>
+      <text x="440" y="510" text-anchor="middle" font-size="10.5" fill="#5d6d7e">交流 · 变频</text>
+
+      <!-- 制动单元 -->
+      <rect x="292" y="466" width="78" height="58" rx="5" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+      <line x1="370" y1="495" x2="398" y2="495" stroke="#37474f" stroke-width="4"/>
+      <text x="331" y="490" text-anchor="middle" font-size="12" fill="#c0392b">制动单元</text>
+      <text x="331" y="508" text-anchor="middle" font-size="10.5" fill="#c0392b">摩擦式</text>
+
+      <!-- 气动张紧（气缸+控制阀+张紧轮） -->
+      <circle cx="618" cy="176" r="27" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="618" y="216" text-anchor="middle" font-size="10.5" fill="#546e7a">张紧轮</text>
+      <rect x="668" y="86" width="58" height="86" rx="5" fill="#e8f0fb" stroke="#2980b9" stroke-width="2"/>
+      <line x1="683" y1="172" x2="655" y2="192" stroke="#37474f" stroke-width="5"/>
+      <path d="M 668 128 L 640 128 L 640 160" fill="none" stroke="#2980b9" stroke-width="2"/>
+      <circle cx="640" cy="164" r="5" fill="#fff" stroke="#2980b9" stroke-width="2"/>
+      <text x="697" y="122" text-anchor="middle" font-size="11.5" fill="#1f5fa8">气动张紧</text>
+      <text x="697" y="140" text-anchor="middle" font-size="11.5" fill="#1f5fa8">气缸+控制阀</text>
+
+      <!-- 测量轮 -->
+      <circle cx="252" cy="500" r="21" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="273" y1="500" x2="284" y2="500" stroke="#37474f" stroke-width="3"/>
+      <rect x="196" y="440" width="58" height="30" rx="4" fill="#e8f5e9" stroke="#1e7e34" stroke-width="1.6"/>
+      <line x1="238" y1="470" x2="248" y2="482" stroke="#1e7e34" stroke-width="2"/>
+      <text x="225" y="459" text-anchor="middle" font-size="10.5" fill="#1e7e34">脉冲发生器</text>
+      <text x="252" y="536" text-anchor="middle" font-size="11.5" fill="#546e7a">测量轮</text>
+
+      <!-- 入口/出口导向辊 -->
+      <circle cx="256" cy="580" r="15" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="271" y1="580" x2="282" y2="580" stroke="#37474f" stroke-width="2.5"/>
+      <circle cx="624" cy="580" r="15" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="598" y1="580" x2="609" y2="580" stroke="#37474f" stroke-width="2.5"/>
+      <text x="222" y="596" text-anchor="middle" font-size="10.5" fill="#546e7a">导向辊</text>
+      <text x="658" y="596" text-anchor="middle" font-size="10.5" fill="#546e7a">导向辊</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>牵引轮轴承</td><td>磨损/点蚀</td><td>重载低速+冲击载荷</td><td>抖动→偏心/壁厚质量劣化</td></tr>
+      <tr><td>行星齿轮箱</td><td>齿面磨损/回差增大</td><td>扭矩交变</td><td>牵引不同步</td></tr>
+      <tr><td>夹持皮带</td><td>磨损/开裂/打滑</td><td>张力与疲劳</td><td>缆线滑移·速度失真</td></tr>
+      <tr><td>制动装置</td><td>摩擦面油污/过热衰退</td><td>长期载荷+误动作</td><td>溜线（后果最高等级）</td></tr>
+      <tr><td>气动张紧</td><td>气压衰减</td><td>管路/阀件老化</td><td>夹持力不足</td></tr>
+      <tr><td>主驱动电机</td><td>过载/过热</td><td>负载波动</td><td>牵引失速停机</td></tr>
+    </table>
+
+    <p style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+
+</body>
+</html>

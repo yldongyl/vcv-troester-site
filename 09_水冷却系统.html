@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>水冷却系统 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 09/23 · 水冷却系统</div>
+  <h1>水冷却系统 <span class="sub">冷却管段水/气冷却回路 · 循环泵·补水·换热</span></h1>
+  <div class="badges">
+    <span>失效模式 ×5</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>水冷却系统为冷却管段提供受控降温回路，是线体的液循环辅助系统，与线体同步连续运行。</p>
+    <p>关键结构组成：<b>循环泵×2、水箱与定压补水（纯水）、换热设施（冷水机组/冷却塔）</b>及供/回水管路。</p>
+    <p>工作方式：冷却水在循环泵加压下流经冷却管段水套/喷淋，吸收电缆下行热量后经回水返回换热设施降温复用。</p>
+    <p>工艺位置：承接上游硫化管段出口的高温缆体，对其进行受控降温，为后续牵引与收卷提供稳定的温度状态。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备构成</div><div class="v">循环泵×2 · 水箱补水 · 冷水机组/冷却塔</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">冷却管段受控降温换热环节</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">液循环加压冷却 · 换热降温复用</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游：硫化管段出口 · 下游：牵引/收卷段</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 520" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="350" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">水冷却系统结构示意图 · 冷却回路</text>
+
+      <!-- 冷却管路（先画，供部件覆盖）：泵→供水→冷却管段→回水→水箱 -->
+      <line x1="320" y1="180" x2="320" y2="470" stroke="#2980b9" stroke-width="3.5"/>
+      <path d="M 320 180 L 780 180" fill="none" stroke="#2980b9" stroke-width="3.5"/>
+      <path d="M 810 450 L 810 470 L 120 470 L 120 362" fill="none" stroke="#2980b9" stroke-width="3"/>
+      <path d="M 185 305 L 320 305" fill="none" stroke="#2980b9" stroke-width="3"/>
+      <path d="M 762 174 L 772 180 L 762 186" fill="none" stroke="#2980b9" stroke-width="2"/>
+      <path d="M 208 464 L 198 470 L 208 476" fill="none" stroke="#2980b9" stroke-width="2"/>
+      <path d="M 114 370 L 120 360 L 126 370" fill="none" stroke="#2980b9" stroke-width="2"/>
+      <text x="560" y="172" text-anchor="middle" font-size="9.5" fill="#1f5fa8">供水 · 加压冷却水</text>
+      <text x="470" y="486" text-anchor="middle" font-size="9.5" fill="#5d6d7e">回水（吸收管段热量）</text>
+
+      <!-- 水箱 -->
+      <rect x="55" y="250" width="130" height="110" rx="6" fill="#e8f4fd" stroke="#2980b9" stroke-width="2"/>
+      <path d="M 65 302 q 12 -8 24 0 q 12 8 24 0 q 12 -8 24 0 q 12 8 24 0" fill="none" stroke="#2980b9" stroke-width="1.6"/>
+      <text x="120" y="272" text-anchor="middle" font-size="11.5" fill="#1f5fa8">水箱 · 溢流</text>
+
+      <!-- 定压补水（纯水）小框 -->
+      <rect x="40" y="90" width="150" height="56" rx="6" fill="#f5f7fa" stroke="#2980b9" stroke-width="1.6"/>
+      <text x="115" y="112" text-anchor="middle" font-size="10.5" fill="#1f5fa8">定压补水 · 纯水</text>
+      <text x="115" y="130" text-anchor="middle" font-size="9" fill="#5d6d7e">回路补水与定压</text>
+      <path d="M 115 146 L 115 246" fill="none" stroke="#2980b9" stroke-width="2"/>
+      <path d="M 109 238 L 115 248 L 121 238" fill="none" stroke="#2980b9" stroke-width="2"/>
+
+      <!-- 循环泵1/2（泵圆+电机，立于集管） -->
+      <circle cx="320" cy="265" r="22" fill="#f5f7fa" stroke="#37474f" stroke-width="2.2"/>
+      <circle cx="320" cy="265" r="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <line x1="342" y1="265" x2="350" y2="265" stroke="#37474f" stroke-width="2.5"/>
+      <rect x="350" y="248" width="60" height="34" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="380" y="269" text-anchor="middle" font-size="10" fill="#37474f">电机</text>
+      <circle cx="320" cy="345" r="22" fill="#f5f7fa" stroke="#37474f" stroke-width="2.2"/>
+      <circle cx="320" cy="345" r="5" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <line x1="342" y1="345" x2="350" y2="345" stroke="#37474f" stroke-width="2.5"/>
+      <rect x="350" y="328" width="60" height="34" rx="5" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="380" y="349" text-anchor="middle" font-size="10" fill="#37474f">电机</text>
+      <text x="286" y="290" text-anchor="middle" font-size="10.5" fill="#37474f">泵1</text>
+      <text x="286" y="370" text-anchor="middle" font-size="10.5" fill="#37474f">泵2</text>
+
+      <!-- 冷却管段（CV管侧） -->
+      <rect x="780" y="150" width="160" height="300" rx="8" fill="#f5f7fa" stroke="#37474f" stroke-width="2"/>
+      <text x="860" y="172" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#2c3e50">冷却管段（CV管侧）</text>
+      <line x1="860" y1="188" x2="860" y2="420" stroke="#1565c0" stroke-width="5" opacity="0.85"/>
+      <text x="860" y="208" text-anchor="middle" font-size="9" fill="#1f5fa8">电缆下行 · 受控降温</text>
+      <text x="860" y="330" text-anchor="middle" font-size="9.5" fill="#546e7a">管外冷却水套/喷淋</text>
+      <text x="860" y="348" text-anchor="middle" font-size="9.5" fill="#546e7a">冷却水吸收管段热量</text>
+
+      <!-- 冷水机组小框 -->
+      <rect x="560" y="60" width="150" height="64" rx="6" fill="#f1f8e9" stroke="#546e7a" stroke-width="1.6"/>
+      <text x="635" y="96" text-anchor="middle" font-size="10.5" fill="#37474f">冷水机组</text>
+      <!-- 冷却塔小框 -->
+      <rect x="760" y="60" width="150" height="64" rx="6" fill="#f1f8e9" stroke="#546e7a" stroke-width="1.6"/>
+      <circle cx="835" cy="88" r="15" fill="#fff" stroke="#37474f" stroke-width="1.4"/>
+      <g stroke="#546e7a" stroke-width="1.6">
+        <line x1="835" y1="76" x2="835" y2="100"/><line x1="824" y1="82" x2="846" y2="94"/><line x1="824" y1="94" x2="846" y2="82"/>
+      </g>
+      <text x="880" y="92" text-anchor="middle" font-size="10.5" fill="#37474f">冷却塔</text>
+      <!-- 机组-塔 塔水回路 -->
+      <line x1="710" y1="92" x2="760" y2="92" stroke="#27ae60" stroke-width="2"/>
+      <text x="735" y="112" text-anchor="middle" font-size="8.5" fill="#1e8449">塔水回路</text>
+      <!-- 换热接入供/回水管（示意） -->
+      <path d="M 635 124 L 635 176" fill="none" stroke="#27ae60" stroke-width="1.8"/>
+      <path d="M 629 168 L 635 178 L 641 168" fill="none" stroke="#27ae60" stroke-width="1.8"/>
+      <path d="M 835 124 L 835 146" fill="none" stroke="#27ae60" stroke-width="1.8"/>
+      <path d="M 829 138 L 835 148 L 841 138" fill="none" stroke="#27ae60" stroke-width="1.8"/>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>循环泵</td><td>轴承/机封劣化·干运行</td><td>连续运转+水质影响</td><td>"泵开无水"→冷却中断</td></tr>
+      <tr><td>管路</td><td>结垢/藻类堵塞</td><td>水质漂移+温水环境</td><td>流量衰减·换热下降</td></tr>
+      <tr><td>水质</td><td>电导率升高/腐蚀</td><td>浓缩与补充水波动</td><td>换热器结垢（上游管温失稳根因）</td></tr>
+      <tr><td>冷水机组/冷却塔</td><td>压缩机劣化/风机失衡</td><td>夏季高负荷期</td><td>供水温度上抬</td></tr>
+      <tr><td>补水与液位</td><td>补水阀/控制异常</td><td>执行机构老化</td><td>系统失水断流</td></tr>
+    </table>
+
+    <p class="small" style="font-size:12.5px;color:#5d6d7e">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

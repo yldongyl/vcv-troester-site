@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三层共挤挤出机 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 01/23 · 挤出塑化系统</div>
+  <h1>三层共挤挤出机 <span class="sub">内屏/绝缘/外屏三层塑化挤出动力 · 三台并列供十字机头</span></h1>
+  <div class="badges">
+    <span>失效模式 ×6</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>三层共挤挤出机是内屏/绝缘/外屏三层的塑化挤出动力设备，共三台并列运行。</p>
+    <p>工艺位置处于线体挤出段最前端，三台挤出机各自向十字机头供料，共同完成三层共挤。</p>
+    <p>关键结构组成：料斗（喂料段）、分段加热机筒与螺杆、齿轮箱、主驱动电机、冷却风机。</p>
+    <p>工作方式：物料经料斗落入机筒，由螺杆旋转输送、压缩、剪切塑化并均匀建压推送；机筒分区温控，采用液温控回路（介质以水为主），辅以径向风机冷却。</p>
+    <p>三台并列、各自独立驱动，互为同型设备。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备构成</div><div class="v">料斗·机筒螺杆·齿轮箱·主驱动电机</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">挤出段前端 · 三台并列供十字机头</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">螺杆剪切塑化 · 液温控（水为主）</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上游加料系统 · 下游十字机头</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 660" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">三层共挤挤出机 · 单台侧视示意（非按比例）</text>
+
+      <!-- 底座 -->
+      <rect x="60" y="612" width="860" height="24" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+
+      <!-- 料斗 -->
+      <path d="M 356 236 L 436 236 L 412 330 L 380 330 Z" fill="#eceff1" stroke="#37474f" stroke-width="2.2"/>
+      <rect x="374" y="330" width="44" height="46" fill="#f5f7fa" stroke="#37474f" stroke-width="2"/>
+      <text x="396" y="222" text-anchor="middle" font-size="12.5" fill="#37474f">料斗</text>
+
+      <!-- 电机冷却风扇 -->
+      <circle cx="136" cy="354" r="20" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <g stroke="#546e7a" stroke-width="2">
+        <line x1="136" y1="338" x2="136" y2="370"/><line x1="120" y1="354" x2="152" y2="354"/>
+        <line x1="124" y1="342" x2="148" y2="366"/><line x1="148" y1="342" x2="124" y2="366"/>
+      </g>
+      <text x="160" y="388" font-size="10.5" fill="#546e7a">电机冷却风扇</text>
+
+      <!-- 主驱动电机 -->
+      <line x1="100" y1="330" x2="100" y2="384" stroke="#37474f" stroke-width="2"/>
+      <rect x="78" y="384" width="116" height="112" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <line x1="106" y1="384" x2="106" y2="496" stroke="#b0bec5" stroke-width="1.4"/>
+      <line x1="166" y1="384" x2="166" y2="496" stroke="#b0bec5" stroke-width="1.4"/>
+      <text x="136" y="442" text-anchor="middle" font-size="12.5" fill="#37474f">主驱动电机</text>
+      <line x1="136" y1="496" x2="136" y2="612" stroke="#37474f" stroke-width="3"/>
+
+      <!-- 联轴器 -->
+      <rect x="194" y="424" width="34" height="32" rx="4" fill="#cfd8dc" stroke="#37474f" stroke-width="2"/>
+      <text x="211" y="416" text-anchor="middle" font-size="10" fill="#5d6d7e">联轴器</text>
+
+      <!-- 齿轮箱 + 油池 -->
+      <rect x="228" y="380" width="112" height="120" rx="6" fill="#fff8e1" stroke="#37474f" stroke-width="2.6"/>
+      <circle cx="262" cy="424" r="21" fill="none" stroke="#8d6e63" stroke-width="3"/>
+      <circle cx="306" cy="456" r="15" fill="none" stroke="#8d6e63" stroke-width="3"/>
+      <g fill="#8d6e63">
+        <rect x="259" y="398" width="6" height="7"/><rect x="259" y="443" width="6" height="7"/>
+        <rect x="236" y="421" width="7" height="6"/><rect x="281" y="421" width="7" height="6"/>
+      </g>
+      <text x="284" y="368" text-anchor="middle" font-size="12.5" fill="#37474f">齿轮箱</text>
+      <rect x="252" y="504" width="64" height="30" fill="#fff8e1" stroke="#37474f" stroke-width="2"/>
+      <text x="284" y="524" text-anchor="middle" font-size="10.5" fill="#5d6d7e">油池</text>
+      <line x1="284" y1="534" x2="284" y2="612" stroke="#37474f" stroke-width="3"/>
+
+      <!-- 机筒 + 螺杆 + 分区 -->
+      <rect x="340" y="404" width="404" height="72" rx="6" fill="#f5f7fa" stroke="#37474f" stroke-width="2.6"/>
+      <path d="M 352 440 q 12 -22 24 0 q 12 22 24 0 q 12 -22 24 0 q 12 22 24 0 q 12 -22 24 0 q 12 22 24 0 q 12 -22 24 0 q 12 22 24 0 q 12 -22 24 0 q 12 22 24 0 q 12 -22 24 0 q 12 22 24 0 q 12 -22 24 0 q 12 22 24 0" fill="none" stroke="#607d8b" stroke-width="3"/>
+      <g stroke="#90a4ae" stroke-width="1.4">
+        <line x1="404" y1="404" x2="404" y2="476"/><line x1="468" y1="404" x2="468" y2="476"/>
+        <line x1="532" y1="404" x2="532" y2="476"/><line x1="596" y1="404" x2="596" y2="476"/>
+        <line x1="660" y1="404" x2="660" y2="476"/>
+      </g>
+      <text x="372" y="398" text-anchor="middle" font-size="10" fill="#546e7a">1区</text>
+      <text x="436" y="398" text-anchor="middle" font-size="10" fill="#546e7a">2区</text>
+      <text x="500" y="398" text-anchor="middle" font-size="10" fill="#546e7a">3区</text>
+      <text x="564" y="398" text-anchor="middle" font-size="10" fill="#546e7a">4区</text>
+      <text x="628" y="398" text-anchor="middle" font-size="10" fill="#546e7a">5区</text>
+      <text x="700" y="398" text-anchor="middle" font-size="10" fill="#546e7a">6区</text>
+      <text x="542" y="494" text-anchor="middle" font-size="12" fill="#37474f">机筒 · 内螺杆 · 分区温控</text>
+
+      <!-- 加热带 -->
+      <g>
+        <rect x="352" y="376" width="52" height="16" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.6"/>
+        <rect x="416" y="376" width="52" height="16" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.6"/>
+        <rect x="480" y="376" width="52" height="16" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.6"/>
+        <rect x="544" y="376" width="52" height="16" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.6"/>
+        <rect x="608" y="376" width="52" height="16" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.6"/>
+        <rect x="672" y="376" width="52" height="16" rx="3" fill="#fdecea" stroke="#c0392b" stroke-width="1.6"/>
+      </g>
+
+      <!-- 机筒径向风机（冷却） -->
+      <circle cx="686" cy="344" r="17" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <g stroke="#546e7a" stroke-width="1.8"><line x1="686" y1="331" x2="686" y2="357"/><line x1="673" y1="344" x2="699" y2="344"/><line x1="677" y1="335" x2="695" y2="353"/></g>
+      <path d="M 686 361 L 686 374" stroke="#2980b9" stroke-width="2"/>
+      <text x="686" y="326" text-anchor="middle" font-size="11" fill="#546e7a">径向风机（机筒冷却）</text>
+
+      <!-- 液温控水管 -->
+      <g stroke="#2980b9" stroke-width="2.4" fill="none">
+        <path d="M 400 476 L 400 522 L 368 522"/>
+        <path d="M 464 476 L 464 522 L 492 522"/>
+      </g>
+      <circle cx="364" cy="522" r="5" fill="#fff" stroke="#2980b9" stroke-width="2"/>
+      <circle cx="496" cy="522" r="5" fill="#fff" stroke="#2980b9" stroke-width="2"/>
+      <text x="352" y="542" text-anchor="end" font-size="10.5" fill="#1f5fa8">液温控水管（水为主）</text>
+
+      <!-- 十字机头连接段（设备接口关系线） -->
+      <line x1="744" y1="440" x2="884" y2="440" stroke="#37474f" stroke-width="5"/>
+      <rect x="884" y="392" width="66" height="120" rx="8" fill="#eef7f0" stroke="#1e7e34" stroke-width="2.4"/>
+      <text x="917" y="436" text-anchor="middle" font-size="11.5" fill="#1e7e34">十字机头</text>
+      <text x="917" y="456" text-anchor="middle" font-size="10.5" fill="#1e7e34">三层共挤</text>
+      <text x="917" y="476" text-anchor="middle" font-size="10" fill="#5d6d7e">连接段</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>齿轮箱</td><td>磨损/轴承点蚀/缺油</td><td>润滑劣化+接触疲劳</td><td>塑化失稳·停机</td></tr>
+      <tr><td>主驱动电机</td><td>散热失效/绕组劣化/轴承磨损</td><td>冷却失效过热</td><td>降速或停机</td></tr>
+      <tr><td>机筒加热分区</td><td>加热带失效/测温漂移</td><td>电热与测温回路劣化</td><td>分区温度失控</td></tr>
+      <tr><td>螺杆/机筒</td><td>磨损/划伤</td><td>熔体与物料剪切磨蚀</td><td>塑化能力与熔压波动</td></tr>
+      <tr><td>液温控管路接头</td><td>渗漏</td><td>软连接/密封老化</td><td>温控失准</td></tr>
+      <tr><td>料斗/喂料段</td><td>架桥/断料</td><td>物料潮解或下料不畅</td><td>供料波动→壁厚不均</td></tr>
+    </table>
+    <p>示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>测偏仪 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="inner">
+    <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 20/23 · 在线测量系统</div>
+    <h1>测偏仪 <span class="sub">绝缘三层同心度/壁厚的X射线在线测量</span></h1>
+    <div class="badges">
+      <span>失效模式 ×5</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>测偏仪</b>（X射线在线测偏）为<b>第三方测量设备</b，装于挤出—硫化—冷却段沿线，用于绝缘线芯壁厚、偏心与三层同心度的在线测量。</p>
+    <p>电缆水平穿越<b>铅帘屏蔽的测量隧道</b>；隧道内上方设<b>X射线源</b>、下方设<b>接收器</b>，射线束穿透线芯，依据衰减差异反演各层厚度与偏心分布。</p>
+    <p>关键结构组成：测量隧道（屏蔽腔体）、铅帘、X射线源、接收器、冷却风机单元（为射线管连续运行散热）。</p>
+    <p>工作方式：X射线无损穿透测量，在线连续、非接触；<b>测量值接入线控</b>系统统一记录与判定。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备定位</div><div class="v">第三方测量设备</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">挤出—硫化—冷却段沿线</div></div>
+      <div class="card"><div class="k">测量对象</div><div class="v">壁厚 · 偏心 · 同心度</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">X射线穿透 · 在线非接触</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">测量值接入线控</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 430" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="26" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">测偏仪（X射线在线测偏）结构示意图 · 挤出线穿越测量隧道</text>
+
+      <!-- 挤出线（水平穿越） -->
+      <line x1="40" y1="215" x2="900" y2="215" stroke="#1565c0" stroke-width="6" opacity="0.85"/>
+      <text x="40" y="200" text-anchor="start" font-size="11" fill="#1565c0">来线（挤出·硫化·冷却后）</text>
+      <text x="900" y="200" text-anchor="end" font-size="11" fill="#1565c0">去牵引/收线</text>
+
+      <!-- 测量隧道（屏蔽腔体） -->
+      <rect x="300" y="135" width="300" height="160" rx="6" fill="#f5f7fa" stroke="#37474f" stroke-width="2.6"/>
+      <text x="300" y="128" text-anchor="start" font-size="12" fill="#37474f">测量隧道（屏蔽腔体）</text>
+
+      <!-- 铅帘（左右开口，避开电缆缝） -->
+      <g fill="#90a4ae" opacity="0.9">
+        <rect x="294" y="140" width="4" height="68"/><rect x="301" y="140" width="4" height="68"/><rect x="308" y="140" width="4" height="68"/><rect x="315" y="140" width="4" height="68"/>
+        <rect x="294" y="222" width="4" height="68"/><rect x="301" y="222" width="4" height="68"/><rect x="308" y="222" width="4" height="68"/><rect x="315" y="222" width="4" height="68"/>
+        <rect x="581" y="140" width="4" height="68"/><rect x="588" y="140" width="4" height="68"/><rect x="595" y="140" width="4" height="68"/><rect x="581" y="222" width="4" height="68"/><rect x="588" y="222" width="4" height="68"/><rect x="595" y="222" width="4" height="68"/>
+      </g>
+      <text x="309" y="312" text-anchor="middle" font-size="10.5" fill="#5d6d7e">铅帘</text>
+      <text x="588" y="312" text-anchor="middle" font-size="10.5" fill="#5d6d7e">铅帘</text>
+
+      <!-- X射线源 / 射线束 / 接收器 -->
+      <rect x="420" y="170" width="80" height="30" rx="4" fill="#f5eef8" stroke="#8e44ad" stroke-width="2.2"/>
+      <text x="460" y="189" text-anchor="middle" font-size="11.5" fill="#6c3483">X射线源</text>
+      <line x1="460" y1="200" x2="460" y2="230" stroke="#8e44ad" stroke-width="2" stroke-dasharray="5 4"/>
+      <text x="506" y="213" text-anchor="start" font-size="9.5" fill="#6c3483">射线束</text>
+      <rect x="420" y="230" width="80" height="28" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="460" y="248" text-anchor="middle" font-size="11.5" fill="#37474f">接收器</text>
+
+      <!-- 冷却风机/电机（功能单元） -->
+      <rect x="660" y="150" width="170" height="70" rx="6" fill="#f5f7fa" stroke="#37474f" stroke-width="2.2"/>
+      <circle cx="690" cy="192" r="14" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
+      <g stroke="#546e7a" stroke-width="1.8">
+        <line x1="690" y1="180" x2="690" y2="204"/><line x1="679" y1="185" x2="701" y2="199"/><line x1="679" y1="199" x2="701" y2="185"/>
+      </g>
+      <rect x="714" y="182" width="28" height="20" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.8"/>
+      <text x="790" y="186" text-anchor="middle" font-size="11" fill="#37474f">冷却风机</text>
+      <text x="790" y="202" text-anchor="middle" font-size="11" fill="#37474f">+ 电机</text>
+      <line x1="604" y1="185" x2="660" y2="185" stroke="#5d6d7e" stroke-width="1.8" stroke-dasharray="6 4"/>
+      <text x="632" y="177" text-anchor="middle" font-size="9.5" fill="#5d6d7e">冷却风道</text>
+
+      <!-- 设备接口关系：测量值接入线控 -->
+      <rect x="650" y="330" width="230" height="40" rx="6" fill="#e8f0fb" stroke="#1f5fa8" stroke-width="1.8"/>
+      <text x="765" y="355" text-anchor="middle" font-size="12" fill="#1f5fa8" font-weight="bold">线控系统（测量值接入）</text>
+      <path d="M 450 295 L 450 350 L 650 350" fill="none" stroke="#5d6d7e" stroke-width="1.8"/>
+      <text x="462" y="322" text-anchor="start" font-size="9.5" fill="#5d6d7e">测量值</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr>
+        <td>X射线管</td>
+        <td>老化→测值漂移</td>
+        <td>真空管寿命特性</td>
+        <td>质量判定失真（核心备件）</td>
+      </tr>
+      <tr>
+        <td>信号/通讯</td>
+        <td>数值冻结·丢包</td>
+        <td>接口与链路</td>
+        <td>全线质量数据缺失</td>
+      </tr>
+      <tr>
+        <td>铅帘/防护</td>
+        <td>磨损</td>
+        <td>缆线通过摩擦</td>
+        <td>辐射防护风险（点检）</td>
+      </tr>
+      <tr>
+        <td>冷却/风机</td>
+        <td>劣化</td>
+        <td>连续运转</td>
+        <td>管温升高·寿命加速</td>
+      </tr>
+      <tr>
+        <td>机械标定</td>
+        <td>支撑位移</td>
+        <td>振动环境</td>
+        <td>测量偏置</td>
+      </tr>
+    </table>
+
+    <p style="font-size:12.5px;color:var(--c-sub)">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+
+</body>
+</html>

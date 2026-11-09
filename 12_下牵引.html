@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>下牵引 · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 12/23 · 牵引制动系统</div>
+  <h1>下牵引 <span class="sub">塔下驱动牵引单元 · 与上牵引协同建立线张力</span></h1>
+  <div class="badges">
+    <span>失效模式 ×4</span>
+  </div>
+</div></header>
+<div class="container">
+
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>下牵引为塔下的线体牵引单元（带式牵引机），由牵引轮、上下两皮带环、驱动电机、就地表板与底座等构成。</p>
+    <p>工艺位置：位于上牵引与储线器之间，缆线自塔顶下行，经下牵引夹持输送后去往储线与收线段。</p>
+    <p>功能：与上牵引协同建立并维持线体张力，共同决定线速稳定。</p>
+    <p>工作方式（电+机械）：驱动电机经传动机构带动牵引轮，上下皮带环夹持缆线摩擦牵引；电气量以就地表板现场指示为主。</p>
+    <div class="cards">
+      <div class="card"><div class="k">设备属性</div><div class="v">塔下带式牵引单元</div></div>
+      <div class="card"><div class="k">结构组成</div><div class="v">牵引轮 · 皮带环 · 驱动电机 · 就地表板</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">上牵引与储线器之间</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">电力驱动 · 皮带环夹持摩擦牵引</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 980 640" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="490" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">下牵引（塔下驱动牵引单元）结构示意图</text>
+
+      <!-- VCV塔位置示意 -->
+      <g stroke="#90a4ae" stroke-width="2" fill="none">
+        <path d="M50,64 L50,300 M130,64 L130,300 M42,64 L138,64 M42,168 L138,168 M42,300 L138,300"/>
+      </g>
+      <text x="90" y="56" text-anchor="middle" font-size="10" fill="#546e7a">VCV塔（位置示意）</text>
+      <circle cx="90" cy="76" r="5" fill="#90a4ae"/>
+      <text x="144" y="80" font-size="9.5" fill="#546e7a">塔顶 · 上牵引</text>
+      <circle cx="90" cy="292" r="7" fill="#2c4a7c"/>
+      <text x="144" y="296" font-size="9.5" fill="#2c4a7c">塔下 · 本页 · 下牵引</text>
+
+      <!-- 就地表板（部件） -->
+      <rect x="700" y="64" width="240" height="112" rx="8" fill="#fafbfd" stroke="#546e7a" stroke-width="1.8"/>
+      <text x="820" y="86" text-anchor="middle" font-size="11" fill="#2c3e50">就地表板 · 指针读数</text>
+      <g stroke="#546e7a" stroke-width="2" fill="#fff">
+        <circle cx="765" cy="126" r="16"/><circle cx="845" cy="126" r="16"/>
+      </g>
+      <g stroke="#c0392b" stroke-width="2">
+        <line x1="765" y1="126" x2="774" y2="116"/><line x1="845" y1="126" x2="853" y2="118"/>
+      </g>
+      <g fill="#c0392b"><circle cx="765" cy="126" r="1.8"/><circle cx="845" cy="126" r="1.8"/></g>
+
+      <!-- 电缆（线体） -->
+      <line x1="40" y1="420" x2="876" y2="420" stroke="#1565c0" stroke-width="4"/>
+      <polygon points="876,413 892,420 876,427" fill="#1565c0"/>
+      <text x="44" y="408" font-size="10.5" fill="#1565c0">自塔顶（上牵引）侧</text>
+      <text x="884" y="408" text-anchor="end" font-size="10.5" fill="#1565c0">去储线器 · 收线</text>
+
+      <!-- 皮带环 ×2 + 牵引轮 -->
+      <text x="480" y="344" text-anchor="middle" font-size="11" fill="#546e7a">皮带环 ×2 · 夹持牵引轮</text>
+      <path d="M267,356 L693,356 A30,30 0 0 1 693,416 L267,416 A30,30 0 0 1 267,356 Z" fill="#f5f7fa" stroke="#546e7a" stroke-width="2.2"/>
+      <path d="M267,424 L693,424 A30,30 0 0 1 693,484 L267,484 A30,30 0 0 1 267,424 Z" fill="#f5f7fa" stroke="#546e7a" stroke-width="2.2"/>
+      <g fill="#eceff1" stroke="#37474f" stroke-width="2">
+        <circle cx="297" cy="386" r="16"/><circle cx="663" cy="386" r="16"/>
+        <circle cx="297" cy="454" r="16"/><circle cx="663" cy="454" r="16"/>
+      </g>
+      <g fill="#37474f"><circle cx="297" cy="386" r="2.2"/><circle cx="663" cy="386" r="2.2"/><circle cx="297" cy="454" r="2.2"/><circle cx="663" cy="454" r="2.2"/></g>
+
+      <!-- 驱动电机 + 传动轴 -->
+      <rect x="135" y="352" width="100" height="72" rx="6" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="185" y="392" text-anchor="middle" font-size="11" fill="#37474f">驱动电机</text>
+      <line x1="235" y1="388" x2="281" y2="388" stroke="#37474f" stroke-width="2.5"/>
+
+      <!-- 底座与支腿 -->
+      <g fill="#f5f7fa" stroke="#90a4ae" stroke-width="1.8">
+        <rect x="262" y="486" width="20" height="74"/>
+        <rect x="678" y="486" width="20" height="74"/>
+        <rect x="130" y="560" width="630" height="16" rx="4"/>
+      </g>
+      <text x="445" y="596" text-anchor="middle" font-size="10" fill="#5d6d7e">塔下安装 · 底座（示意）</text>
+    </svg>
+    </div>
+
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>驱动电机</td><td>电气故障/过热</td><td>负载与散热劣化</td><td>跳停（根因难定位）</td></tr>
+      <tr><td>传动轴承</td><td>磨损</td><td>同牵引类低速重载</td><td>抖动/异响</td></tr>
+      <tr><td>夹持/传动皮带</td><td>磨损打滑</td><td>张力循环</td><td>速度失真·张力波动</td></tr>
+      <tr><td>就地表计</td><td>读数未接入</td><td>机械表计局限</td><td>异常发现滞后</td></tr>
+    </table>
+    <p>示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>
+  </section>
+
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>
