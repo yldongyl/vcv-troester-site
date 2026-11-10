@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手套箱与投料辅助(20F 净化间) · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 26/30 · S1 挤出塑化</div>
+  <h1>手套箱与投料辅助(20F 净化间) <span class="sub">洁净加料作业保护与料包转运 · 20F/19F 净化区</span></h1>
+  <div class="badges"><span>失效模式 ×4</span></div>
+</div></header>
+<div class="container">
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p>本节覆盖 20F 洁净加料区的作业辅助设备:<b>手套箱</b>(硅胶手套隔离操作,防潮防尘)、<b>除湿机</b>(维持间内湿度)、<b>加料行车与堆垛车</b>(料包提升转运)、<b>电动液压搬运车</b>。与 02 加料系统共同保障原料在干燥洁净状态下进入挤出工序。</p>
+    <p>点检要点:手套箱手套破损与运行、除湿机运行与湿度、员工净化着装、搬运车电池、行车/堆垛车运行。</p>
+    <div class="cards">
+      <div class="card"><div class="k">位置</div><div class="v">20F(及 19F)净化间</div></div>
+      <div class="card"><div class="k">功能</div><div class="v">投料作业防护与物料转运</div></div>
+      <div class="card"><div class="k">关键件</div><div class="v">硅胶手套 · 除湿机 · 行车/堆垛车 · 电池</div></div>
+      <div class="card"><div class="k">质量关联</div><div class="v">料品含水/含尘→绝缘杂质缺陷</div></div>
+    </div>
+  </section>
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 430" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">20F 净化间 · 手套箱与投料辅助 · 示意（非按比例）</text>
+      <line x1="90" y1="60" x2="90" y2="380" stroke="#546e7a" stroke-width="4"/><line x1="850" y1="60" x2="850" y2="380" stroke="#546e7a" stroke-width="4"/>
+      <text x="100" y="78" font-size="10" fill="#546e7a">净化间隔墙（尘埃粒子/温湿度监测）</text>
+      <rect x="300" y="120" width="300" height="170" rx="8" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <rect x="360" y="150" width="180" height="60" rx="6" fill="#e8f6fa" stroke="#0e7fa0" stroke-width="2"/>
+      <text x="450" y="184" text-anchor="middle" font-size="10.5" fill="#0e7fa0">观察窗</text>
+      <circle cx="380" cy="255" r="16" fill="#fff" stroke="#37474f" stroke-width="2.2"/><circle cx="440" cy="255" r="16" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+      <text x="620" y="259" font-size="10" fill="#c0392b">硅胶手套×2 · 检查破损</text>
+      <text x="450" y="135" text-anchor="middle" font-size="11.5" fill="#37474f" font-weight="bold">手套箱（干燥/隔尘投料）</text>
+      <rect x="140" y="180" width="120" height="100" rx="6" fill="#eef2f7" stroke="#37474f" stroke-width="2"/>
+      <text x="200" y="222" text-anchor="middle" font-size="10.5" fill="#37474f">除湿机</text>
+      <text x="200" y="242" text-anchor="middle" font-size="9.5" fill="#5d6d7e">湿度 · 漏水</text>
+      <rect x="150" y="66" width="620" height="12" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="1.8"/>
+      <rect x="400" y="80" width="90" height="34" rx="4" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
+      <text x="510" y="102" font-size="10.5" fill="#37474f">加料行车（电动葫芦）</text>
+      <rect x="660" y="310" width="170" height="60" rx="6" fill="#eef2f7" stroke="#37474f" stroke-width="2"/>
+      <text x="745" y="336" text-anchor="middle" font-size="10.5" fill="#37474f">液压搬运车/堆垛车</text>
+      <text x="745" y="354" text-anchor="middle" font-size="9.5" fill="#5d6d7e">电池 · 机构 · 限位</text>
+      <path d="M720 310 L660 300 L610 250 L600 215" fill="none" stroke="#90a4ae" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="470" y="415" text-anchor="middle" font-size="10.5" fill="#5d6d7e">料包转运路径：搬运车/堆垛 → 行车起吊 → 手套箱投料 · 员工净化着装为点检项</text>
+    </svg>
+    </div>
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>手套箱手套</td><td>破损泄漏</td><td>反复拉伸·化学品老化</td><td>湿气粉尘进入→原料受潮/污染</td></tr>
+      <tr><td>除湿机</td><td>失效/漏水</td><td>压缩机劣化·冷凝水路堵塞</td><td>间内湿度超标→干燥系统负荷上升</td></tr>
+      <tr><td>行车/堆垛车</td><td>机构失灵·限位失效</td><td>起升/行走机构磨损</td><td>投料中断;涉载重作业安全</td></tr>
+      <tr><td>搬运车电池</td><td>续航劣化</td><td>充放电循环老化</td><td>转运效率下降·停线待料风险</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:#5d6d7e;margin-top:6px;">失效模式为该类设备行业通用清单；示意图为该类设备通用形态、非按比例。</p>
+  </section>
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

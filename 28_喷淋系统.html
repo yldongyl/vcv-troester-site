@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>喷淋系统(7F) · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 28/30 · S7 冷却体系</div>
+  <h1>喷淋系统(7F) <span class="sub">出管缆芯的喷淋水冷却段 · 泵/软管/阀/过滤</span></h1>
+  <div class="badges"><span>失效模式 ×4</span></div>
+</div></header>
+<div class="container">
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>喷淋系统</b>位于 7F,缆芯出硫化管后以喷淋水对其表面进行初步降温:喷淋泵加压,经软管与手动阀分配到管段,过滤器保护喷嘴;配有液压压力表指示。</p>
+    <p>点检要点:液压表、喷淋软管漏水、软管与冷却管道手动阀状态、喷淋站过滤器清理、喷淋泵运行与漏油。</p>
+    <div class="cards">
+      <div class="card"><div class="k">位置</div><div class="v">7F · 出管后冷却区</div></div>
+      <div class="card"><div class="k">功能</div><div class="v">缆芯表面喷淋降温(冷却链前端)</div></div>
+      <div class="card"><div class="k">主要构成</div><div class="v">喷淋泵 · 管路/软管 · 手动阀 · 过滤器 · 液压表</div></div>
+      <div class="card"><div class="k">关联设备</div><div class="v">09 水冷却系统 · 25 冷却塔(水循环后端)</div></div>
+    </div>
+  </section>
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 430" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">7F 喷淋系统 · 出管缆芯喷淋预冷示意（非按比例）</text>
+      <line x1="60" y1="190" x2="880" y2="190" stroke="#1565c0" stroke-width="5"/><polygon points="872,183 890,190 872,197" fill="#1565c0"/>
+      <text x="66" y="176" font-size="10.5" fill="#1565c0">缆芯自 7F 下密封出管</text>
+      <text x="876" y="176" text-anchor="end" font-size="10.5" fill="#1565c0">→ 冷却水槽方向</text>
+      <rect x="280" y="110" width="380" height="140" rx="8" fill="none" stroke="#90a4ae" stroke-width="2" stroke-dasharray="8 6"/>
+      <text x="470" y="128" text-anchor="middle" font-size="10.5" fill="#5d6d7e">喷淋段</text>
+      <polygon points="360,140 372,140 366,158" fill="#0e7fa0"/><polygon points="464,140 476,140 470,158" fill="#0e7fa0"/><polygon points="568,140 580,140 574,158" fill="#0e7fa0"/>
+      <path d="M366 158 L366 186 M470 158 L470 186 M574 158 L574 186" stroke="#0e7fa0" stroke-width="2.6" stroke-dasharray="3 3"/>
+      <text x="620" y="146" font-size="10" fill="#0e7fa0">喷嘴/软管组（漏水·堵塞）</text>
+      <rect x="120" y="300" width="130" height="62" rx="6" fill="#f5f7fa" stroke="#37474f" stroke-width="2.4"/>
+      <text x="185" y="326" text-anchor="middle" font-size="10.5" fill="#37474f">喷淋泵</text>
+      <text x="185" y="344" text-anchor="middle" font-size="9.5" fill="#5d6d7e">漏油·运转</text>
+      <circle cx="150" cy="288" r="12" fill="#fff" stroke="#37474f" stroke-width="2"/><text x="150" y="292" text-anchor="middle" font-size="8">表</text>
+      <text x="166" y="270" font-size="9.5" fill="#5d6d7e">液压压力表</text>
+      <rect x="280" y="300" width="130" height="62" rx="6" fill="#eef2f7" stroke="#37474f" stroke-width="2"/>
+      <text x="345" y="326" text-anchor="middle" font-size="10.5" fill="#37474f">过滤器</text>
+      <text x="345" y="344" text-anchor="middle" font-size="9.5" fill="#5d6d7e">定期清理</text>
+      <rect x="440" y="300" width="130" height="62" rx="6" fill="#eef2f7" stroke="#37474f" stroke-width="2"/>
+      <text x="505" y="326" text-anchor="middle" font-size="10.5" fill="#37474f">手动阀</text>
+      <text x="505" y="344" text-anchor="middle" font-size="9.5" fill="#5d6d7e">与冷却管道联动</text>
+      <path d="M250 330 L280 330 M410 330 L440 330 M570 330 L640 330 L640 260 L574 200" fill="none" stroke="#0e7fa0" stroke-width="3"/>
+      <polygon points="570,208 574,192 582,206" fill="#0e7fa0"/>
+      <path d="M660 250 L740 250 L740 330" stroke="#90a4ae" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+      <text x="748" y="296" font-size="9.5" fill="#5d6d7e">回水/排水</text>
+      <text x="470" y="416" text-anchor="middle" font-size="10.5" fill="#5d6d7e">点检：泵运转与漏油 · 软管漏水 · 过滤器 · 进回水阀开度</text>
+    </svg>
+    </div>
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>喷淋泵</td><td>运行异常/漏油</td><td>密封磨损·轴承劣化</td><td>喷淋量不足→缆芯冷速失当</td></tr>
+      <tr><td>软管/喷嘴</td><td>漏水·堵塞</td><td>老化·水质结垢</td><td>局部冷却不均·表面质量风险</td></tr>
+      <tr><td>过滤器</td><td>脏堵</td><td>未及时清理</td><td>流量衰减</td></tr>
+      <tr><td>手动阀</td><td>开度误动</td><td>人为/振动</td><td>段间水量失衡</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:#5d6d7e;margin-top:6px;">失效模式为该类设备行业通用清单；示意图为该类设备通用形态、非按比例。</p>
+  </section>
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

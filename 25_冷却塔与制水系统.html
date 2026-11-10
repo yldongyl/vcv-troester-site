@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>冷却塔与制水系统(21F 屋顶) · 功能与失效模式 | 南海海缆VCV线</title>
+<style>
+:root{--c-temp:#d64541;--c-vib:#e67e22;--c-elec:#2980b9;--c-leak:#16a085;--c-flow:#3f51b5;--c-gas:#27ae60;--c-cam:#607d8b;--c-pres:#8e44ad;
+  --c-ink:#2c3e50;--c-sub:#5d6d7e;--c-line:#dfe6ee;--c-bg:#f4f6f9;--c-head1:#16263f;--c-head2:#2c4a7c;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","PingFang SC","Segoe UI",sans-serif;background:var(--c-bg);color:var(--c-ink);line-height:1.7;}
+.container{max-width:1180px;margin:0 auto;padding:0 20px 40px;}
+header.page{background:linear-gradient(135deg,var(--c-head1),var(--c-head2));color:#fff;padding:26px 20px 20px;}
+header.page .inner{max-width:1180px;margin:0 auto;}
+.series{font-size:12.5px;letter-spacing:2px;opacity:.75;margin-bottom:6px;}
+h1{font-size:24px;margin-bottom:10px;}
+h1 .sub{font-size:15px;font-weight:400;opacity:.85;}
+.badges span{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12.5px;margin-right:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);}
+.badges .ok{background:rgba(46,204,113,.25);border-color:rgba(46,204,113,.6);}
+.badges .warn{background:rgba(241,196,15,.2);border-color:rgba(241,196,15,.6);}
+section{background:#fff;border-radius:10px;padding:22px 26px;margin:20px 0;box-shadow:0 1px 4px rgba(22,38,63,.08);}
+h2{font-size:18px;margin-bottom:12px;padding-left:12px;border-left:5px solid var(--c-head2);}
+h3{font-size:15px;margin:14px 0 6px;}
+p{margin-bottom:8px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0;}
+.card{background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;padding:10px 14px;border-top:3px solid var(--c-head2);}
+.card .k{font-size:12px;color:var(--c-sub);}
+.card .v{font-size:14px;font-weight:600;}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0;}
+th{background:#eef2f7;text-align:left;padding:7px 9px;border:1px solid var(--c-line);font-weight:600;white-space:nowrap;}
+td{padding:7px 9px;border:1px solid var(--c-line);vertical-align:top;}
+tr:nth-child(even) td{background:#fafbfd;}
+.stg{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:9px;white-space:nowrap;}
+.stg.in{background:#e8f0fb;color:#1f5fa8;border:1px solid #aecbf0;}
+.stg.add{background:#fdf6ec;color:#b35c00;border:1px solid #f5cba7;}
+.stg.p2{background:#eef2f7;color:#5d6d7e;border:1px solid #cfd8e3;}
+.svgwrap{border:1px solid var(--c-line);border-radius:8px;background:#fff;padding:8px;overflow-x:auto;}
+svg text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;padding:10px 14px;background:#fafbfd;border:1px solid var(--c-line);border-radius:8px;margin:12px 0;font-size:13px;}
+.legend .item{display:flex;align-items:center;gap:6px;}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex:none;}
+.footnotes{font-size:12.5px;color:var(--c-sub);padding-left:20px;margin-top:8px;}
+.footnotes li{margin-bottom:3px;}
+.nonebox{background:#eef2f7;border-left:4px solid #90a4ae;border-radius:0 8px 8px 0;padding:12px 16px;font-size:13.5px;margin:12px 0;}
+footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+a{color:var(--c-head2);text-decoration:none;font-weight:600;}
+@media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
+</style>
+</head>
+<body>
+<header class="page"><div class="inner">
+  <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 25/30 · S7 冷却体系</div>
+  <h1>冷却塔与制水系统(21F 屋顶) <span class="sub">工艺冷却水散热与纯水制备 · 全线冷源后端</span></h1>
+  <div class="badges"><span>失效模式 ×4</span></div>
+</div></header>
+<div class="container">
+  <section>
+    <h2>1. 设备功能概述</h2>
+    <p><b>冷却塔</b>位于 21F(屋顶),与制水系统共同构成冷却水系统的散热与补水前端:循环热水经塔内喷淋与风机强制通风降温后回用;制水装置为工艺回路提供合格水质,水箱投加药液控制水质。</p>
+    <p>点检要点:冷却塔运行、制水系统运行、药箱药水液位、风机皮带、水箱水质、风机状态。</p>
+    <div class="cards">
+      <div class="card"><div class="k">位置</div><div class="v">21F 屋顶</div></div>
+      <div class="card"><div class="k">功能</div><div class="v">冷却水散热 + 工艺纯水制备</div></div>
+      <div class="card"><div class="k">主要构成</div><div class="v">风机/皮带 · 塔体水箱 · 布水系统 · 制水装置 · 加药</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">09 水冷却系统 · 15F 冷却水系统(冷冻机/外循环)</div></div>
+    </div>
+  </section>
+  <section>
+    <h2>2. 结构示意图与可能的失效模式</h2>
+    <div class="svgwrap">
+    <svg viewBox="0 0 940 470" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="470" y="28" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">21F 屋顶冷却塔 + 制水系统 · 结构示意（非按比例）</text>
+      <rect x="300" y="150" width="320" height="220" rx="10" fill="#f5f7fa" stroke="#37474f" stroke-width="2.5"/>
+      <text x="460" y="230" text-anchor="middle" font-size="12" fill="#37474f">冷却塔体</text>
+      <text x="460" y="250" text-anchor="middle" font-size="10.5" fill="#5d6d7e">布水器 · 填料（结垢/堵塞风险）</text>
+      <circle cx="460" cy="108" r="34" fill="#fff" stroke="#37474f" stroke-width="2.4"/>
+      <line x1="436" y1="84" x2="484" y2="132" stroke="#37474f" stroke-width="2"/><line x1="484" y1="84" x2="436" y2="132" stroke="#37474f" stroke-width="2"/>
+      <text x="512" y="104" font-size="11" fill="#37474f">塔风机 + 皮带</text>
+      <text x="512" y="120" font-size="10" fill="#5d6d7e">点检：异响/皮带张紧</text>
+      <line x1="460" y1="142" x2="460" y2="150" stroke="#37474f" stroke-width="3"/>
+      <path d="M140 200 L300 200" stroke="#b03a2e" stroke-width="3.5"/><polygon points="292,194 306,200 292,206" fill="#b03a2e"/>
+      <text x="148" y="190" font-size="10.5" fill="#b03a2e">回水（来自15F冷却环路）</text>
+      <rect x="330" y="370" width="140" height="52" rx="5" fill="#e8f6fa" stroke="#0e7fa0" stroke-width="2"/>
+      <text x="400" y="398" text-anchor="middle" font-size="10.5" fill="#0e7fa0">塔底水箱 · 液位/水质</text>
+      <path d="M470 396 L640 396" stroke="#0e7fa0" stroke-width="3.5"/><polygon points="632,390 646,396 632,402" fill="#0e7fa0"/>
+      <text x="478" y="386" font-size="10.5" fill="#0e7fa0">降温回用 → 工艺/换热</text>
+      <rect x="660" y="200" width="150" height="90" rx="6" fill="#eef2f7" stroke="#37474f" stroke-width="2"/>
+      <text x="735" y="238" text-anchor="middle" font-size="11" fill="#37474f">制水装置</text>
+      <text x="735" y="256" text-anchor="middle" font-size="10" fill="#5d6d7e">RO/树脂 · 产水水质</text>
+      <rect x="660" y="310" width="150" height="60" rx="6" fill="#fdf6ec" stroke="#b35c00" stroke-width="1.8"/>
+      <text x="735" y="344" text-anchor="middle" font-size="10.5" fill="#b35c00">药箱（加药量检查）</text>
+      <path d="M735 290 L735 310" stroke="#b35c00" stroke-width="2"/>
+      <text x="470" y="455" text-anchor="middle" font-size="10.5" fill="#5d6d7e">与 24 下预热、09 水冷却、15F 冷冻机同属冷却/水平衡体系</text>
+    </svg>
+    </div>
+    <table>
+      <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
+      <tr><td>塔风机/皮带</td><td>皮带劣化·风机停转</td><td>长期户外·载荷循环</td><td>散热能力下降→全回路水温攀升</td></tr>
+      <tr><td>布水/填料</td><td>结垢·堵塞</td><td>水质漂移·药液管理不当</td><td>换热效率下降</td></tr>
+      <tr><td>水箱水质</td><td>菌藻/浊度超标</td><td>加药不及时</td><td>下游泵与密封面腐蚀磨损</td></tr>
+      <tr><td>制水装置</td><td>产水不达标</td><td>膜/树脂劣化</td><td>工艺水品质影响预热/冷却回路</td></tr>
+    </table>
+    <p style="font-size:12.5px;color:#5d6d7e;margin-top:6px;">失效模式为该类设备行业通用清单；示意图为该类设备通用形态、非按比例。</p>
+  </section>
+</div>
+<footer>本页为设备功能与失效模式基线，测点方案后续追加确认。<br><a href="index.html">← 返回设备功能总览</a></footer>
+</body>
+</html>

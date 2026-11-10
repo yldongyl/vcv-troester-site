@@ -1,6 +1,6 @@
 # VCV 设备功能与失效模式视图 · Render 静态站点
 
-本站为纯静态 HTML（1 个总览 + 23 个设备页，页面自包含、无构建依赖），发布到 Render Static Site 即可。
+本站为纯静态 HTML（1 个总览 + 30 个设备页，页面自包含、无构建依赖），发布到 Render Static Site 即可。
 
 ## 部署步骤（约 5 分钟）
 
@@ -12,7 +12,7 @@
 2. **Render 连接**：登录 [render.com](https://dashboard.render.com) → **New** → **Static Site** → 授权并选择该仓库。
 3. **关键设置**（若用仓库内 `render.yaml` 走 Blueprint 会自动带上，手动创建则按此填）：
    - Build Command：**留空**（无构建）
-   - Publish Directory：**`/`**（站点根即仓库根，index.html 为首页）
+   - Publish Directory：**`.`**（一个英文句点＝仓库根；也可留空。注意不能填 `/`，Render 会报 "StaticPublishPath must be a relative path"）
 4. 点 **Create Static Site**，约 1 分钟得到 `https://vcv-troester-site.onrender.com`，自动 HTTPS + 全球 CDN。
 5. 以后更新：改完 HTML 直接 `git push`，Render 自动重新发布。
 
