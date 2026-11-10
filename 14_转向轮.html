@@ -50,7 +50,7 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
 <body>
 <header class="page"><div class="inner">
   <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 14/23 · 储线张力系统</div>
-  <h1>转向轮（储线活动小车） <span class="sub">储线段活动小车换向轮系 · 塔内高空 · 电缆换向与储线</span></h1>
+  <h1>转向轮（10F） <span class="sub">缆芯冷却上行段→下行段的折返转向轮 · 塔身 10F 高空</span></h1>
   <div class="badges">
     <span>失效模式 ×4</span>
   </div>
@@ -59,15 +59,15 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
 
   <section>
     <h2>1. 设备功能概述</h2>
-    <p><b>转向轮</b>为储线段活动小车上的电缆换向轮系，与储线器整机（见 13 页）共同完成缆线在塔内的往返储线与换向。</p>
-    <p>关键结构组成：轻量化转向轮与轴承座/轮轴、免维护齿形带、小车驱动电机（AC 电机）、小车框架与塔壁精密导轨附着件。</p>
-    <p>工作方式：AC 电机经齿形带驱动轮系转动并带动小车沿塔壁导轨升降，属电驱动、机械传动的轮系机构。</p>
-    <p>轮系安装于塔内高空、人工可达性差，轴承润滑等维护依赖周期性登高作业。</p>
+    <p><b>转向轮</b>安装于塔身 <b>10F</b>（位置以全局走向示意图为准）：缆芯自 -1F 回转仓上行至此，改为下行、向 9F 下牵引方向输送，是缆线路径的折返转向点。</p>
+    <p>关键结构组成：轻量化转向轮与轴承座/轮轴、免维护齿形带、驱动电机（AC 电机）、轮架与塔身承重附着件。</p>
+    <p>工作方式：缆芯靠轮体转向，轮系可经齿形带由电机驱动，属电驱动、机械传动的轮系机构（行业通用形态）。</p>
+    <p>轮系安装于塔身高空、人工可达性差，轴承润滑等维护依赖周期性登高作业。</p>
     <div class="cards">
-      <div class="card"><div class="k">构成</div><div class="v">转向轮+轴承座 / 齿形带 / AC电机 / 小车框架</div></div>
-      <div class="card"><div class="k">工艺位置</div><div class="v">S9 储线张力 · 储线段活动小车</div></div>
-      <div class="card"><div class="k">工作方式</div><div class="v">电驱动+齿形带机械传动 · 沿塔壁导轨升降</div></div>
-      <div class="card"><div class="k">关联设备</div><div class="v">储线器（13 页）· 上下储线跨间缆线</div></div>
+      <div class="card"><div class="k">构成</div><div class="v">转向轮+轴承座 / 齿形带 / AC电机 / 轮架</div></div>
+      <div class="card"><div class="k">工艺位置</div><div class="v">塔身 10F · 缆芯上行→下行折返点</div></div>
+      <div class="card"><div class="k">工作方式</div><div class="v">轮体转向 + 电驱动/齿形带传动</div></div>
+      <div class="card"><div class="k">关联设备</div><div class="v">18 回转仓（上游上行段） · 12 下牵引（下游）</div></div>
     </div>
   </section>
 
@@ -75,7 +75,7 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
     <h2>2. 结构示意图与可能的失效模式</h2>
     <div class="svgwrap">
     <svg viewBox="0 0 960 540" width="100%" xmlns="http://www.w3.org/2000/svg">
-      <text x="480" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">储线活动小车转向轮 · 结构示意图 · 非按比例</text>
+      <text x="480" y="30" text-anchor="middle" font-size="15" font-weight="bold" fill="#2c3e50">10F 转向轮 · 结构示意图 · 非按比例</text>
 
       <!-- 塔壁导轨 -->
       <line x1="120" y1="60" x2="120" y2="520" stroke="#546e7a" stroke-width="4"/>
@@ -87,18 +87,18 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
         <line x1="104" y1="400" x2="120" y2="400"/><line x1="104" y1="454" x2="120" y2="454"/>
         <line x1="104" y1="508" x2="120" y2="508"/>
       </g>
-      <text x="135" y="52" text-anchor="middle" font-size="11" fill="#37474f" font-weight="bold">塔壁 · 精密导轨</text>
+      <text x="135" y="52" text-anchor="middle" font-size="11" fill="#37474f" font-weight="bold">塔身结构（10F）</text>
 
       <!-- 电缆往返 -->
       <path d="M300,60 L300,300 A78,78 0 0 1 456,300 L456,60" fill="none" stroke="#1565c0" stroke-width="4.5" opacity="0.85"/>
-      <text x="286" y="76" text-anchor="end" font-size="10" fill="#1565c0">电缆·自上一跨</text>
-      <text x="470" y="76" font-size="10" fill="#1565c0">电缆·去下一跨（往返储线）</text>
+      <text x="286" y="76" text-anchor="end" font-size="10" fill="#1565c0">电缆·自 -1F 上行</text>
+      <text x="470" y="76" font-size="10" fill="#1565c0">电缆·折返后下行（去 9F 方向）</text>
 
       <!-- 活动小车 -->
       <rect x="150" y="386" width="400" height="96" rx="8" fill="#eceff1" stroke="#37474f" stroke-width="2.5"/>
       <rect x="152" y="404" width="14" height="26" fill="#90a4ae" stroke="#37474f" stroke-width="1.4"/>
       <rect x="152" y="440" width="14" height="26" fill="#90a4ae" stroke="#37474f" stroke-width="1.4"/>
-      <text x="360" y="474" text-anchor="middle" font-size="11.5" fill="#37474f">储线活动小车（沿导轨升降）</text>
+      <text x="360" y="474" text-anchor="middle" font-size="11.5" fill="#37474f">转向轮架（固定于 10F 塔身）</text>
 
       <!-- 转向轮 -->
       <line x1="378" y1="306" x2="378" y2="386" stroke="#37474f" stroke-width="5"/>
@@ -118,7 +118,7 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
       <line x1="386" y1="320" x2="476" y2="415" stroke="#37474f" stroke-width="2.6"/>
       <text x="470" y="330" font-size="10" fill="#37474f">免维护齿形带</text>
       <rect x="462" y="392" width="88" height="52" rx="6" fill="#e8f0fb" stroke="#2980b9" stroke-width="2.2"/>
-      <text x="506" y="414" text-anchor="middle" font-size="10.5" fill="#1f5fa8">小车驱动电机</text>
+      <text x="506" y="414" text-anchor="middle" font-size="10.5" fill="#1f5fa8">驱动电机</text>
       <text x="506" y="430" text-anchor="middle" font-size="9" fill="#5d6d7e">（AC 电机）</text>
     </svg>
     </div>
@@ -126,8 +126,8 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
     <table>
       <tr><th>部位/部件</th><th>可能的失效模式</th><th>机理简述</th><th>对产线的影响</th></tr>
       <tr><td>转向轮轴承</td><td>缺脂/磨损→卡滞</td><td>高空润滑维护不便</td><td>张力扰动传导全线</td></tr>
-      <tr><td>齿形带</td><td>老化/跳齿</td><td>挠曲循环</td><td>小车位置失准</td></tr>
-      <tr><td>驱动电机</td><td>过热/劣化</td><td>频繁启停</td><td>小车失去微调能力</td></tr>
+      <tr><td>齿形带</td><td>老化/跳齿</td><td>挠曲循环</td><td>转动失准/速度异常</td></tr>
+      <tr><td>驱动电机</td><td>过热/劣化</td><td>频繁启停</td><td>折返驱动异常</td></tr>
       <tr><td>结构件</td><td>异物/腐蚀</td><td>高空环境</td><td>转动干涉</td></tr>
     </table>
     <p style="font-size:12.5px;color:#5d6d7e;margin-top:6px;">示意图依据设备资料绘制，非按比例；失效模式为该类设备行业通用清单，具体设备的重点项将在后续测点确认中逐项圈定。</p>

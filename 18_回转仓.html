@@ -52,7 +52,7 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
 <header class="page">
   <div class="inner">
     <div class="series">南海海缆 VCV 线 · 设备功能与失效模式视图 · 18/23 · S11 压力容器</div>
-    <h1>回转仓 <span class="sub">— 塔顶回转压力容器 · 电缆 180° 换向与腔压维持</span></h1>
+    <h1>回转仓 <span class="sub">— 塔底（-1F）回转压力容器 · 硫化后缆芯 180° 换向与腔压维持</span></h1>
     <div class="badges">
       <span>失效模式 ×4</span>
     </div>
@@ -64,15 +64,15 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
   <!-- ======================= 1. 设备功能概述 ======================= -->
   <section>
     <h2>1. 设备功能概述</h2>
-    <p><b>回转仓</b>为 VCV 塔顶的回转压力容器：电缆在仓内完成 180° 换向（自交联管一侧上行、至塔顶牵引单元一侧下行），并维持仓内腔压，属<b>涉压安全设备</b>。</p>
-    <p>关键结构组成：回转压力容器本体（壳体与随动顶盖）、底部法兰与密封、回转支撑滚道（大直径低速重载轴承）、外齿圈与驱动小齿轮+回转驱动电机（减速）、仓内换向轮及塔顶支撑平台。</p>
+    <p><b>回转仓</b>为 VCV 塔底（-1F，楼层牌名"压力回转仓"）的回转压力容器：缆芯自上方硫化管（18F→-1F）竖直下行至此后，在仓内完成 180° 换向转为上行，送往塔身 10F 转向轮；仓内为氮气环境并维持腔压，属<b>涉压安全设备</b>。</p>
+    <p>关键结构组成：回转压力容器本体（壳体与随动顶盖）、底部法兰与密封、回转支撑滚道（大直径低速重载轴承）、外齿圈与驱动小齿轮+回转驱动电机（减速）、仓内换向轮及仓体支撑平台；仓旁配套回油箱与回油泵。</p>
     <p>工作方式：顶盖随动缓慢回转，电缆连续穿行不换向停机；回转扭矩经"驱动电机—小齿轮—外齿圈"机械传动副输入；腔压由压力边界（壳体·底法兰·回转密封面构成的涉压安全界限）维持。</p>
-    <p>工艺位置：位于塔顶，上游承接交联管段（CV 管）侧上行缆线，下游衔接塔顶牵引单元，是全线缆线路径中唯一的 180° 换向承压节点。</p>
+    <p>工艺位置：位于 -1F，上游承接硫化管下行段（18F→-1F），下游衔接冷却上行段（-1F→10F 转向轮），是全线缆线路径中唯一的 180° 换向承压节点。</p>
     <div class="cards">
-      <div class="card"><div class="k">设备定位</div><div class="v">塔顶 · 电缆 180° 换向 + 维持腔压</div></div>
+      <div class="card"><div class="k">设备定位</div><div class="v">-1F 塔底 · 缆芯 180° 换向 + 维持腔压（氮气环境）</div></div>
       <div class="card"><div class="k">关键结构</div><div class="v">仓体 · 回转支撑滚道 · 小齿轮/电机 · 换向轮</div></div>
       <div class="card"><div class="k">工作方式</div><div class="v">顶盖随动缓慢回转 · 机械驱动 + 承压腔体</div></div>
-      <div class="card"><div class="k">上下游关联</div><div class="v">上交联管段 · 下塔顶牵引单元</div></div>
+      <div class="card"><div class="k">上下游关联</div><div class="v">上：硫化管下行段 · 下：-1F→10F 上行段</div></div>
       <div class="card"><div class="k">安全属性</div><div class="v" style="color:#c0392b">涉压安全设备 · 处置须专项安全评审</div></div>
     </div>
   </section>
@@ -82,12 +82,12 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
     <h2>2. 结构示意图与可能的失效模式</h2>
     <div class="svgwrap">
     <svg viewBox="0 0 980 680" width="100%" xmlns="http://www.w3.org/2000/svg">
-      <text x="490" y="30" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">塔顶回转压力容器剖面示意 · 紫色虚线为压力边界（涉压安全界限）</text>
+      <text x="490" y="30" text-anchor="middle" font-size="15" fill="#2c3e50" font-weight="bold">-1F（塔底）回转压力容器剖面示意 · 紫色虚线为压力边界（涉压安全界限）</text>
 
       <!-- VCV 塔轮廓（背景参照） -->
       <line x1="240" y1="120" x2="240" y2="660" stroke="#90a4ae" stroke-width="2" stroke-dasharray="12 8"/>
       <line x1="740" y1="120" x2="740" y2="660" stroke="#90a4ae" stroke-width="2" stroke-dasharray="12 8"/>
-      <text x="490" y="112" text-anchor="middle" font-size="11.5" fill="#78909c">VCV 塔顶（背景参照）</text>
+      <text x="490" y="112" text-anchor="middle" font-size="11.5" fill="#78909c">VCV 塔底 · -1F（背景参照）</text>
 
       <!-- 回转压力容器本体（壳体+腔体） -->
       <path d="M 330 210 Q 490 128 650 210 L 650 424 L 330 424 Z" fill="#f5f7fa" stroke="#37474f" stroke-width="3"/>
@@ -135,10 +135,10 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
       <line x1="762" y1="494" x2="759" y2="494" stroke="#37474f" stroke-width="2"/>
       <text x="805" y="476" text-anchor="middle" font-size="11" fill="#37474f">回转驱动电机（减速）</text>
 
-      <!-- 塔顶支撑平台（静置·中留孔） -->
+      <!-- 仓体支撑平台（静置·中留孔） -->
       <rect x="268" y="540" width="150" height="20" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
       <rect x="562" y="540" width="150" height="20" fill="#eceff1" stroke="#37474f" stroke-width="2"/>
-      <text x="310" y="578" text-anchor="middle" font-size="11" fill="#546e7a">塔顶支撑平台（静置·中心留孔）</text>
+      <text x="310" y="578" text-anchor="middle" font-size="11" fill="#546e7a">仓体支撑平台（静置·中心留孔）</text>
 
       <!-- 电缆 180° 换向路径（上行→仓内换向轮→下行） -->
       <circle cx="490" cy="300" r="38" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
@@ -150,8 +150,8 @@ a{color:var(--c-head2);text-decoration:none;font-weight:600;}
       <circle cx="528" cy="470" r="8" fill="#fff" stroke="#37474f" stroke-width="2"/>
       <line x1="534" y1="464" x2="600" y2="416" stroke="#546e7a" stroke-width="1"/>
       <text x="656" y="404" text-anchor="middle" font-size="10.5" fill="#546e7a">电缆穿越密封（维持腔压）</text>
-      <text x="416" y="642" text-anchor="middle" font-size="11.5" fill="#1565c0">↑ 自交联管侧上行</text>
-      <text x="572" y="642" text-anchor="middle" font-size="11.5" fill="#1565c0">↓ 至塔顶牵引单元下行</text>
+      <text x="416" y="642" text-anchor="middle" font-size="11.5" fill="#1565c0">↓ 自硫化管侧下行（18F→-1F）</text>
+      <text x="572" y="642" text-anchor="middle" font-size="11.5" fill="#1565c0">↑ 换向后上行至 10F 转向轮</text>
     </svg>
     </div>
 

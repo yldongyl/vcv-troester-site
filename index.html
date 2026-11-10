@@ -29,6 +29,21 @@
   .num{font-size:14px;font-weight:700;color:var(--c-head2);}
   .small{font-size:12.5px;color:var(--c-sub);}
   footer{color:var(--c-sub);font-size:12.5px;text-align:center;padding:16px 20px 36px;line-height:1.9;}
+  /* 全局走向示意图 */
+  .chip{display:inline-block;width:24px;height:0;border-top:3px solid #1a7f37;vertical-align:middle;margin-right:6px;}
+  .chip.carry{border-color:#8a97a3}.chip.hot{border-color:#b03a2e}.chip.cool{border-color:#0e7fa0}
+  .dg-star{color:#c0561f;font-weight:700;}
+  .dg-legend{margin:6px 0 10px;font-size:12.5px;color:var(--c-sub);}
+  .dg-legend b{color:var(--c-ink);margin-right:14px;font-weight:600;}
+  .dg-svg svg{width:100%;height:auto;display:block;}
+  .dg-svg text{font-family:inherit;}
+  .dg-svg .t-fl{font-size:11.5px;fill:#5d6d7e}
+  .dg-svg .t-nm{font-size:13px;font-weight:600;fill:#2c3e50}
+  .dg-svg .t-nt{font-size:11px;fill:#5d6d7e}
+  .dg-svg .t-ln{font-size:12.5px;font-weight:700}
+  .dg-svg a{cursor:pointer;text-decoration:none;}
+  .dg-svg a .t-nm,.dg-svg a .t-nt{fill:#2c4a7c;text-decoration:underline;text-decoration-color:#b8c8dc;}
+  .dg-svg a:hover .t-nm,.dg-svg a:hover .t-nt{fill:#0f4c81;text-decoration-color:#0f4c81;}
   @media print{body{background:#fff;}section{box-shadow:none;border:1px solid var(--c-line);}}
 </style>
 </head>
@@ -49,19 +64,145 @@
     <h2>产线工艺链与设备页导航</h2>
     <div class="flow">
       <div class="stage">【线端 · 放线】</div>
-      <div class="node"><a href="15_龙门放线机.html">15 龙门放线机</a> → <a href="17_导体浮动轮.html">17 导体浮动轮</a> → <a href="13_储线器.html">13 储线器</a> · <a href="14_转向轮.html">14 转向轮</a></div>
+      <div class="node"><a href="15_龙门放线机.html">15 龙门放线机</a> → <a href="17_导体浮动轮.html">17 导体浮动轮</a> → <a href="13_储线器.html">13 储线器</a>（均在 1F 放线段）</div>
       <div class="arrow">↓</div>
       <div class="stage">【挤出成型段】</div>
-      <div class="node"><a href="02_加料系统.html">02 加料系统</a> → <a href="05_导体预热装置.html">05 导体预热</a> → <a href="01_挤出机_三层共挤.html">01 三层共挤挤出机（内屏/绝缘/外屏 ×3）</a> + <a href="03_模温机TCU.html">03 模温机</a></div>
+      <div class="node"><a href="02_加料系统.html">02 加料系统</a> → <a href="22_剥布机.html">22 剥布机（4F · 导体剥布）</a> → <a href="05_导体预热装置.html">05 导体预热</a> → <a href="01_挤出机_三层共挤.html">01 三层共挤挤出机（内屏/绝缘/外屏 ×3）</a> + <a href="03_模温机TCU.html">03 模温机</a></div>
       <div class="arrow">↓</div>
       <div class="stage">【交联硫化段】</div>
-      <div class="node"><a href="04_硫化管加热系统.html">04 硫化管加热</a> → <a href="06_氮气制备与净化.html">06 氮气制备与净化</a> + <a href="08_端部密封.html">08 端部密封</a>（<a href="07_液压站.html">07 液压站</a> 驱动）→ <a href="18_回转仓.html">18 回转仓</a> → <a href="09_水冷却系统.html">09 水冷却</a></div>
+      <div class="node"><a href="04_硫化管加热系统.html">04 硫化管加热</a> → <a href="06_氮气制备与净化.html">06 氮气制备与净化</a> + <a href="08_端部密封.html">08 端部密封</a>（<a href="07_液压站.html">07 液压站</a> 驱动）→ <a href="18_回转仓.html">18 回转仓（-1F · U形折返）</a> → <a href="14_转向轮.html">14 转向轮（10F）</a> → <a href="09_水冷却系统.html">09 水冷却</a></div>
       <div class="arrow">↓</div>
       <div class="stage">【牵引 · 收线】</div>
-      <div class="node"><a href="10_上牵引.html">10 上牵引</a> → <a href="11_辅助牵引.html">11 辅助牵引</a> → <a href="12_下牵引.html">12 下牵引</a> → <a href="22_剥布机.html">22 剥布机</a> → <a href="23_绕包机.html">23 绕包机</a> → <a href="16_龙门收线机.html">16 龙门收线机（含收线转盘/收线架）</a></div>
+      <div class="node"><a href="10_上牵引.html">10 上牵引</a> → <a href="11_辅助牵引.html">11 辅助牵引</a> → <a href="12_下牵引.html">12 下牵引</a> → <a href="23_绕包机.html">23 绕包机</a> → <a href="16_龙门收线机.html">16 龙门收线机（含收线转盘/收线架）</a></div>
       <div class="arrow">── 贯穿全线 ──</div>
       <div class="node"><a href="19_线控电气系统.html">19 线控与电气系统</a> · <a href="20_测偏仪.html">20 测偏仪</a> · <a href="21_凹凸仪.html">21 凹凸仪</a></div>
     </div>
+  </section>
+
+  <section id="route">
+    <h2>全局走向示意图 · 缆芯路径 × 楼层(双方对齐版)</h2>
+    <p class="small">依据两次现场走查与楼层索引牌整理;绿色实心节点为已确认设备,<span class="dg-star">※</span> 为待确认项(见下表);<b>图中带下划线的设备名可点击</b>,跳转至对应设备功能页。</p>
+    <div class="dg-legend">
+      <b><i class="chip carry"></i>① 导体上行</b><b><i class="chip hot"></i>② 硫化管下行(氮气保护交联)</b><b><i class="chip cool"></i>③ 冷却上行</b><b><i class="chip"></i>④ 牵引/收线下行</b>
+    </div>
+    <div class="dg-svg">
+<svg viewBox="0 0 1180 1090" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VCV塔楼缆芯走向示意图">
+  <g stroke="#dfe6ee">
+    <line x1="130" y1="80"   x2="1170" y2="80"/><line x1="130" y1="122"  x2="1170" y2="122"/>
+    <line x1="130" y1="164"  x2="1170" y2="164"/><line x1="130" y1="206"  x2="1170" y2="206"/>
+    <line x1="130" y1="248"  x2="1170" y2="248" stroke="#2c4a7c" stroke-width="2"/>
+    <line x1="130" y1="290"  x2="1170" y2="290"/><line x1="130" y1="332"  x2="1170" y2="332"/>
+    <line x1="130" y1="374"  x2="1170" y2="374"/><line x1="130" y1="416"  x2="1170" y2="416"/>
+    <line x1="130" y1="458"  x2="1170" y2="458"/><line x1="130" y1="500"  x2="1170" y2="500"/>
+    <line x1="130" y1="542"  x2="1170" y2="542"/><line x1="130" y1="584"  x2="1170" y2="584" stroke="#0e7fa0" stroke-width="2"/>
+    <line x1="130" y1="626"  x2="1170" y2="626"/><line x1="130" y1="668"  x2="1170" y2="668"/>
+    <line x1="130" y1="710"  x2="1170" y2="710"/><line x1="130" y1="752"  x2="1170" y2="752"/>
+    <line x1="130" y1="794"  x2="1170" y2="794"/><line x1="130" y1="836"  x2="1170" y2="836"/>
+    <line x1="130" y1="878"  x2="1170" y2="878"/><line x1="130" y1="920"  x2="1170" y2="920"/>
+    <line x1="130" y1="962"  x2="1170" y2="962" stroke="#2c4a7c" stroke-width="2"/>
+    <line x1="130" y1="1004" x2="1170" y2="1004"/><line x1="130" y1="1046" x2="1170" y2="1046" stroke="#2c4a7c" stroke-width="2"/>
+  </g>
+  <g class="t-fl">
+    <text x="16" y="105">20F</text><text x="16" y="189">19F</text><text x="16" y="231">18M</text>
+    <text x="16" y="252" font-weight="700" fill="#2c4a7c">18F</text><text x="16" y="294">17F</text>
+    <text x="16" y="357">16F</text><text x="16" y="399">15F</text><text x="16" y="441">14F</text>
+    <text x="16" y="483">13F</text><text x="16" y="525">12F</text><text x="16" y="567">11F</text>
+    <text x="16" y="609" fill="#0e7fa0" font-weight="700">10F</text><text x="16" y="651">9F</text>
+    <text x="16" y="693">8F</text><text x="16" y="735">7F</text><text x="16" y="777">6F</text>
+    <text x="16" y="819">5F</text><text x="16" y="861">4F</text><text x="16" y="903">3F</text>
+    <text x="16" y="945">2F</text><text x="16" y="987" font-weight="700" fill="#2c4a7c">1F</text>
+    <text x="16" y="1031" font-weight="700" fill="#2c4a7c">-1F</text>
+  </g>
+
+  <text x="312" y="62" class="t-ln" fill="#8a97a3" text-anchor="middle">① 导体上行</text>
+  <text x="620" y="62" class="t-ln" fill="#b03a2e" text-anchor="middle">② 硫化管下行 · 氮气保护交联</text>
+  <text x="756" y="880" class="t-ln" fill="#0e7fa0">③ 冷却上行</text>
+  <text x="940" y="562" class="t-ln" fill="#1a7f37">④ 牵引/收线下行</text>
+
+  <!-- ① 上行段 -->
+  <line x1="320" y1="983" x2="320" y2="101" stroke="#8a97a3" stroke-width="5"/>
+  <path d="M312 700 L320 680 L328 700 Z" fill="#8a97a3"/><path d="M312 460 L320 440 L328 460 Z" fill="#8a97a3"/>
+
+  <a href="02_加料系统.html"><circle cx="320" cy="101" r="6" fill="#1a7f37"/><text x="338" y="106" class="t-nm">20F 加料间(洁净)</text></a>
+  <a href="05_导体预热装置.html"><circle cx="320" cy="185" r="6" fill="#1a7f37"/><text x="338" y="180" class="t-nm">19F 上预热</text></a>
+  <text x="420" y="180" class="t-nm" fill="#8a97a3">→</text>
+  <a href="10_上牵引.html"><text x="436" y="180" class="t-nm">上牵引</text></a>
+  <text x="338" y="196" class="t-nt">感应线圈加热 · 线位限位保护</text>
+
+  <a href="01_挤出机_三层共挤.html">
+    <rect x="230" y="208" width="600" height="40" rx="8" fill="#eaf3ec" stroke="#1a7f37" stroke-width="2"/>
+    <text x="530" y="224" class="t-nm" text-anchor="middle" fill="#2c4a7c">18F 主机房 · 三层共挤(下行段起点)</text>
+    <text x="530" y="240" class="t-nt" text-anchor="middle">挤出机×3 · 共挤机头+上密封 · 模温机(5温区) · 测偏仪 · 中控屏/PLC</text>
+  </a>
+
+  <!-- ② 硫化管下行 -->
+  <line x1="620" y1="248" x2="620" y2="1025" stroke="#b03a2e" stroke-width="7"/>
+  <path d="M612 500 L628 500 L620 522 Z" fill="#b03a2e"/><path d="M612 740 L628 740 L620 762 Z" fill="#b03a2e"/>
+
+  <circle cx="620" cy="269" r="6" fill="#1a7f37"/>
+  <text x="598" y="273" class="t-nm" text-anchor="end">17F 下预热(流量不足5min停机)</text>
+  <a href="06_氮气制备与净化.html"><circle cx="620" cy="353" r="6" fill="#1a7f37"/><text x="598" y="357" class="t-nm" text-anchor="end">16F 氮气阀组 · 自动排污</text></a>
+  <circle cx="620" cy="395" r="6" fill="#fff" stroke="#c0561f" stroke-width="2.5" stroke-dasharray="3 2"/>
+  <text x="598" y="399" class="t-nt" text-anchor="end">15F 外循环机组 <tspan class="dg-star">※</tspan>(P6)</text>
+  <text x="598" y="483" class="t-nt" text-anchor="end">13–14F 加热管道(沿硫化管)</text>
+  <text x="598" y="525" class="t-nt" text-anchor="end">12F 中心管道 · 11F 冷却管道</text>
+  <a href="04_硫化管加热系统.html"><text x="598" y="828" class="t-nt" text-anchor="end">硫化管加热介质 <tspan class="dg-star">※</tspan>(P2)</text></a>
+
+  <!-- -1F U形底 -->
+  <path d="M620 1025 C620 1050 730 1050 730 1025" stroke="#0e7fa0" stroke-width="7" fill="none"/>
+  <a href="18_回转仓.html"><circle cx="675" cy="1042" r="9" fill="#1a7f37"/><text x="470" y="1078" class="t-nm" text-anchor="end">-1F 压力回转仓(U形折返 · 氮气环境)</text></a>
+  <text x="480" y="1078" class="t-nt">· 回油箱/油泵</text>
+
+  <!-- ③ 冷却上行 -->
+  <line x1="730" y1="1025" x2="730" y2="620" stroke="#0e7fa0" stroke-width="6"/>
+  <path d="M722 850 L730 828 L738 850 Z" fill="#0e7fa0"/><path d="M722 700 L730 678 L738 700 Z" fill="#0e7fa0"/>
+
+  <a href="14_转向轮.html"><circle cx="730" cy="605" r="15" fill="#fff" stroke="#0e7fa0" stroke-width="4"/><circle cx="730" cy="605" r="3" fill="#0e7fa0"/><text x="752" y="600" class="t-nm">10F 转向轮(折返)</text></a>
+
+  <!-- ④ 终下行 -->
+  <path d="M730 590 C730 558 920 558 920 590" stroke="#1a7f37" stroke-width="5" fill="none"/>
+  <line x1="920" y1="590" x2="920" y2="983" stroke="#1a7f37" stroke-width="5"/>
+  <path d="M912 770 L928 770 L920 792 Z" fill="#1a7f37"/><path d="M912 910 L928 910 L920 932 Z" fill="#1a7f37"/>
+
+  <a href="12_下牵引.html"><circle cx="920" cy="647" r="6" fill="#1a7f37"/><text x="940" y="651" class="t-nm">9F 下牵引 · 备用气泵</text></a>
+  <text x="940" y="665" class="t-nt">模具间 <tspan class="dg-star">※</tspan>(P5)</text>
+
+  <circle cx="920" cy="689" r="6" fill="#fff" stroke="#c0561f" stroke-width="2.5" stroke-dasharray="3 2"/>
+  <text x="940" y="688" class="t-nm">8F 引线密封 <tspan class="dg-star">※</tspan></text>
+  <text x="940" y="702" class="t-nt">功能与先后待核(P1)</text>
+
+  <a href="08_端部密封.html"><circle cx="920" cy="731" r="6" fill="#1a7f37"/><text x="940" y="726" class="t-nm">7F 下密封</text></a>
+  <text x="1018" y="726" class="t-nm" fill="#8a97a3">+</text>
+  <a href="07_液压站.html"><text x="1030" y="726" class="t-nm">液压站(同层)</text></a>
+  <text x="940" y="741" class="t-nt">与回转仓先后待核(P1)</text>
+
+  <a href="09_水冷却系统.html"><rect x="913" y="752" width="14" height="168" fill="#e8f6fa" stroke="#0e7fa0" stroke-width="1.5"/><text x="940" y="832" class="t-nt">2–6F 冷却管道</text></a>
+
+  <a href="16_龙门收线机.html"><circle cx="920" cy="983" r="6" fill="#1a7f37"/><text x="940" y="978" class="t-nm">1F 收线(两种方式)</text></a>
+  <text x="940" y="993" class="t-nt">转盘/地转盘 · </text>
+  <a href="21_凹凸仪.html"><text x="1034" y="993" class="t-nt">凹凸仪(成品)</text></a>
+
+  <a href="22_剥布机.html"><circle cx="320" cy="857" r="6" fill="#1a7f37"/><text x="305" y="853" class="t-nm" text-anchor="end">4F 剥布机</text></a>
+  <text x="305" y="868" class="t-nt" text-anchor="end">剥除导体覆布 · 时序<tspan class="dg-star">※</tspan>(P3)</text>
+
+  <a href="15_龙门放线机.html"><circle cx="320" cy="983" r="6" fill="#1a7f37"/><text x="140" y="971" class="t-nm">1F 放线 · 龙门放线机</text></a>
+  <a href="17_导体浮动轮.html"><text x="140" y="986" class="t-nt">浮动轮(舞蹈轮)</text></a>
+  <text x="228" y="986" class="t-nt"> · </text>
+  <a href="11_辅助牵引.html"><text x="240" y="986" class="t-nt">辅助牵引</text></a>
+  <a href="13_储线器.html"><text x="140" y="1001" class="t-nt">储线器</text></a>
+  <text x="176" y="1001" class="t-nt"> <tspan class="dg-star">※</tspan>(P4)</text>
+</svg>
+    </div>
+    <table>
+      <tr><th style="width:56px">编号</th><th>待确认</th></tr>
+      <tr><td>P1</td><td>7F 下密封、8F 引线密封与 -1F 压力回转仓的缆芯先后顺序;8F 段输送对象(缆/水)</td></tr>
+      <tr><td>P2</td><td><a href="04_硫化管加热系统.html">硫化管</a>加热介质与内部温度、压力控制方案</td></tr>
+      <tr><td>P3</td><td><a href="22_剥布机.html">剥布机</a>的导体经过方式(途中穿过 / 独立预处理工位)</td></tr>
+      <tr><td>P4</td><td><a href="13_储线器.html">储线器</a>的功能细节与巡检要求（位置已按全局示意图定为 1F）</td></tr>
+      <tr><td>P5</td><td>9F 模具间、8F 引线密封的功能说明</td></tr>
+      <tr><td>P6</td><td>15F 外循环机组归属的循环系统</td></tr>
+    </table>
+    <p class="small">路径为缆芯走向示意,不代表真实管径与安装尺寸;绿色实心 = 已确认,橙色虚线/※ = 待确认。</p>
   </section>
 
   <section>
@@ -80,16 +221,16 @@
       <tr><td><a href="10_上牵引.html">10 上牵引</a></td><td>S8 牵引制动</td><td>塔顶主牵引+制动单元，线体唯一牵引</td><td>轴承/齿轮磨损→抖动 · 皮带打滑 · 制动衰退→溜线</td><td class="num">6</td></tr>
       <tr><td><a href="11_辅助牵引.html">11 辅助牵引</a></td><td>S8 牵引制动</td><td>线体中部带式夹持牵引，配合主牵引</td><td>皮带磨损打滑 · 张紧漂移 · 速度同步异常</td><td class="num">4</td></tr>
       <tr><td><a href="12_下牵引.html">12 下牵引</a></td><td>S8 牵引制动</td><td>塔下驱动牵引，与上牵引协同建立线张力</td><td>电机跳停 · 传动轴承磨损 · 表计未接入</td><td class="num">4</td></tr>
-      <tr><td><a href="13_储线器.html">13 储线器</a></td><td>S9 储线张力</td><td>塔内立式储线（恒张力、行程约25m），补偿速度差</td><td>张力失稳 · 小车行程异常 · 导向轮磨损</td><td class="num">4</td></tr>
-      <tr><td><a href="14_转向轮.html">14 转向轮</a></td><td>S9 储线张力</td><td>储线段小车换向轮系，塔内高空</td><td>轴承缺脂卡滞 · 齿形带跳齿 · 高空维护不便</td><td class="num">4</td></tr>
+      <tr><td><a href="13_储线器.html">13 储线器</a></td><td>S9 储线张力</td><td>1F 放线段储线/缓冲装置，补偿速度差（实态待 P4 确认）</td><td>张力失稳 · 小车行程异常 · 导向轮磨损</td><td class="num">4</td></tr>
+      <tr><td><a href="14_转向轮.html">14 转向轮</a></td><td>S9 储线张力</td><td>10F 折返点：缆芯上行→下行转向</td><td>轴承缺脂卡滞 · 齿形带跳齿 · 高空维护不便</td><td class="num">4</td></tr>
       <tr><td><a href="15_龙门放线机.html">15 龙门放线机</a></td><td>S10 收放线</td><td>地面门式放线（横移、张力与dancer控制）</td><td>线盘张力失控 · dancer失准 · 横移卡阻</td><td class="num">4</td></tr>
       <tr><td><a href="16_龙门收线机.html">16 龙门收线机</a></td><td>S10 收放线</td><td>门式收线+盘具流转（含收线转盘/收线架）</td><td>低速重载轴承卡死 · 承载臂打滑 · 排线失准</td><td class="num">5</td></tr>
       <tr><td><a href="17_导体浮动轮.html">17 导体浮动轮</a></td><td>S10 收放线</td><td>导体放线端dancer轮+气动比例阀恒张力</td><td>比例阀漂移 · 气缸内泄 · 轮轴承磨损</td><td class="num">4</td></tr>
-      <tr><td><a href="18_回转仓.html">18 回转仓</a></td><td>S11 压力容器</td><td>塔顶回转压力容器：180°换向+维持腔压（涉压）</td><td>回转支撑滚道疲劳 · 密封渗漏→腔压失稳（⛔安全评审）</td><td class="num">4</td></tr>
+      <tr><td><a href="18_回转仓.html">18 回转仓</a></td><td>S11 压力容器</td><td>-1F 塔底回转压力容器：硫化后 180° 换向+维持腔压（氮气·涉压）</td><td>回转支撑滚道疲劳 · 密封渗漏→腔压失稳（⛔安全评审）</td><td class="num">4</td></tr>
       <tr><td><a href="19_线控电气系统.html">19 线控与电气系统</a></td><td>S12 线控电气</td><td>全线PLC/工控机、现场总线、电控柜与人机接口</td><td>柜内电源热点跳闸 · 电能质量扰动 · 通讯链路异常</td><td class="num">5</td></tr>
       <tr><td><a href="20_测偏仪.html">20 测偏仪</a></td><td>S13 在线测量</td><td>绝缘三层同心度/壁厚在线测量（第三方设备）</td><td>X射线管老化 · 信号冻结 · 铅帘磨损</td><td class="num">5</td></tr>
       <tr><td><a href="21_凹凸仪.html">21 凹凸仪</a></td><td>S13 在线测量</td><td>绝缘冷态外径与表面凹凸在线检测（第三方设备）</td><td>镜头污染 · 标定漂移 · 计数冻结</td><td class="num">4</td></tr>
-      <tr><td><a href="22_剥布机.html">22 剥布机</a></td><td>S14 线体辅助</td><td>线端辅助工位，磁粉离合器可控张力</td><td>离合器打滑发热 · 张力失控 · 刀具磨损</td><td class="num">4</td></tr>
+      <tr><td><a href="22_剥布机.html">22 剥布机</a></td><td>S14 线体辅助</td><td>4F 导体预处理：交联前剥离导体外包覆布</td><td>离合器打滑发热 · 张力失控 · 刀具磨损</td><td class="num">4</td></tr>
       <tr><td><a href="23_绕包机.html">23 绕包机</a></td><td>S14 线体辅助</td><td>线端绕包工位（带/线绕包与张力控制）</td><td>张力/制动单元衰退 · 绕包头轴承磨损 · 供带卡滞</td><td class="num">4</td></tr>
     </table>
     <p class="small">示意图依据设备资料绘制，非按比例；失效模式为该类设备的行业通用清单，不含特定产线故障统计；具体设备的重点失效项与测点方案将在后续确认中逐项圈定。</p>
