@@ -81,7 +81,7 @@
 
   <section id="route">
     <h2>全局走向示意图 · 缆芯路径 × 楼层(双方对齐版)</h2>
-    <p class="small">依据两次现场走查与楼层索引牌整理;绿色实心节点为已确认设备,<span class="dg-star">※</span> 为待确认项(见下表);<b>图中带下划线的设备名可点击</b>,跳转至对应设备功能页。</p>
+    <p class="small"><b>图中带下划线的设备名可点击</b>,跳转至对应设备功能页。</p>
     <div class="dg-legend">
       <b><i class="chip carry"></i>① 导体上行</b><b><i class="chip hot"></i>② 硫化管下行(氮气保护交联)</b><b><i class="chip cool"></i>③ 冷却上行</b><b><i class="chip"></i>④ 牵引/收线下行</b>
     </div>
@@ -137,16 +137,21 @@
 
   <!-- ② 硫化管下行 -->
   <line x1="620" y1="248" x2="620" y2="1025" stroke="#b03a2e" stroke-width="7"/>
-  <path d="M612 500 L628 500 L620 522 Z" fill="#b03a2e"/><path d="M612 740 L628 740 L620 762 Z" fill="#b03a2e"/>
+  <path d="M612 500 L628 500 L620 522 Z" fill="#b03a2e"/><path d="M612 850 L628 850 L620 872 Z" fill="#b03a2e"/>
 
   <circle cx="620" cy="269" r="6" fill="#1a7f37"/>
   <text x="598" y="273" class="t-nm" text-anchor="end">17F 下预热(流量不足5min停机)</text>
   <a href="06_氮气制备与净化.html"><circle cx="620" cy="353" r="6" fill="#1a7f37"/><text x="598" y="357" class="t-nm" text-anchor="end">16F 氮气阀组 · 自动排污</text></a>
-  <circle cx="620" cy="395" r="6" fill="#fff" stroke="#c0561f" stroke-width="2.5" stroke-dasharray="3 2"/>
-  <text x="598" y="399" class="t-nt" text-anchor="end">15F 外循环机组 <tspan class="dg-star">※</tspan>(P6)</text>
+  <circle cx="620" cy="395" r="6" fill="#1a7f37"/>
+  <text x="598" y="399" class="t-nt" text-anchor="end">15F 外循环机组</text>
   <text x="598" y="483" class="t-nt" text-anchor="end">13–14F 加热管道(沿硫化管)</text>
-  <text x="598" y="525" class="t-nt" text-anchor="end">12F 中心管道 · 11F 冷却管道</text>
-  <a href="04_硫化管加热系统.html"><text x="598" y="828" class="t-nt" text-anchor="end">硫化管加热介质 <tspan class="dg-star">※</tspan>(P2)</text></a>
+  <text x="598" y="525" class="t-nt" text-anchor="end">12F 中心管道 · 11F 冷却管道(另井送冷却)</text>
+
+  <circle cx="620" cy="689" r="6" fill="#1a7f37"/>
+  <text x="598" y="693" class="t-nm" text-anchor="end">8F 引线密封(出管导向)</text>
+  <a href="08_端部密封.html"><circle cx="620" cy="731" r="6" fill="#1a7f37"/><text x="598" y="735" class="t-nm" text-anchor="end">7F 下密封(管端密封箱)</text></a>
+  <a href="07_液压站.html"><text x="598" y="752" class="t-nt" text-anchor="end">同层液压站 · 驱动密封箱开关</text></a>
+  <text x="598" y="770" class="t-nt" text-anchor="end">缆芯出管后继续下行至 -1F</text>
 
   <!-- -1F U形底 -->
   <path d="M620 1025 C620 1050 730 1050 730 1025" stroke="#0e7fa0" stroke-width="7" fill="none"/>
@@ -165,16 +170,7 @@
   <path d="M912 770 L928 770 L920 792 Z" fill="#1a7f37"/><path d="M912 910 L928 910 L920 932 Z" fill="#1a7f37"/>
 
   <a href="12_下牵引.html"><circle cx="920" cy="647" r="6" fill="#1a7f37"/><text x="940" y="651" class="t-nm">9F 下牵引 · 备用气泵</text></a>
-  <text x="940" y="665" class="t-nt">模具间 <tspan class="dg-star">※</tspan>(P5)</text>
-
-  <circle cx="920" cy="689" r="6" fill="#fff" stroke="#c0561f" stroke-width="2.5" stroke-dasharray="3 2"/>
-  <text x="940" y="688" class="t-nm">8F 引线密封 <tspan class="dg-star">※</tspan></text>
-  <text x="940" y="702" class="t-nt">功能与先后待核(P1)</text>
-
-  <a href="08_端部密封.html"><circle cx="920" cy="731" r="6" fill="#1a7f37"/><text x="940" y="726" class="t-nm">7F 下密封</text></a>
-  <text x="1018" y="726" class="t-nm" fill="#8a97a3">+</text>
-  <a href="07_液压站.html"><text x="1030" y="726" class="t-nm">液压站(同层)</text></a>
-  <text x="940" y="741" class="t-nt">与回转仓先后待核(P1)</text>
+  <text x="940" y="665" class="t-nt">模具间</text>
 
   <a href="09_水冷却系统.html"><rect x="913" y="752" width="14" height="168" fill="#e8f6fa" stroke="#0e7fa0" stroke-width="1.5"/><text x="940" y="832" class="t-nt">2–6F 冷却管道</text></a>
 
@@ -183,26 +179,16 @@
   <a href="21_凹凸仪.html"><text x="1034" y="993" class="t-nt">凹凸仪(成品)</text></a>
 
   <a href="22_剥布机.html"><circle cx="320" cy="857" r="6" fill="#1a7f37"/><text x="305" y="853" class="t-nm" text-anchor="end">4F 剥布机</text></a>
-  <text x="305" y="868" class="t-nt" text-anchor="end">剥除导体覆布 · 时序<tspan class="dg-star">※</tspan>(P3)</text>
+  <text x="305" y="868" class="t-nt" text-anchor="end">交联前导体预处理</text>
 
   <a href="15_龙门放线机.html"><circle cx="320" cy="983" r="6" fill="#1a7f37"/><text x="140" y="971" class="t-nm">1F 放线 · 龙门放线机</text></a>
   <a href="17_导体浮动轮.html"><text x="140" y="986" class="t-nt">浮动轮(舞蹈轮)</text></a>
   <text x="228" y="986" class="t-nt"> · </text>
   <a href="11_辅助牵引.html"><text x="240" y="986" class="t-nt">辅助牵引</text></a>
   <a href="13_储线器.html"><text x="140" y="1001" class="t-nt">储线器</text></a>
-  <text x="176" y="1001" class="t-nt"> <tspan class="dg-star">※</tspan>(P4)</text>
 </svg>
     </div>
-    <table>
-      <tr><th style="width:56px">编号</th><th>待确认</th></tr>
-      <tr><td>P1</td><td>7F 下密封、8F 引线密封与 -1F 压力回转仓的缆芯先后顺序;8F 段输送对象(缆/水)</td></tr>
-      <tr><td>P2</td><td><a href="04_硫化管加热系统.html">硫化管</a>加热介质与内部温度、压力控制方案</td></tr>
-      <tr><td>P3</td><td><a href="22_剥布机.html">剥布机</a>的导体经过方式(途中穿过 / 独立预处理工位)</td></tr>
-      <tr><td>P4</td><td><a href="13_储线器.html">储线器</a>的功能细节与巡检要求（位置已按全局示意图定为 1F）</td></tr>
-      <tr><td>P5</td><td>9F 模具间、8F 引线密封的功能说明</td></tr>
-      <tr><td>P6</td><td>15F 外循环机组归属的循环系统</td></tr>
-    </table>
-    <p class="small">路径为缆芯走向示意,不代表真实管径与安装尺寸;绿色实心 = 已确认,橙色虚线/※ = 待确认。</p>
+    <p class="small">路径为缆芯走向示意,不代表真实管径与安装尺寸。</p>
   </section>
 
   <section>
@@ -221,7 +207,7 @@
       <tr><td><a href="10_上牵引.html">10 上牵引</a></td><td>S8 牵引制动</td><td>塔顶主牵引+制动单元，线体唯一牵引</td><td>轴承/齿轮磨损→抖动 · 皮带打滑 · 制动衰退→溜线</td><td class="num">6</td></tr>
       <tr><td><a href="11_辅助牵引.html">11 辅助牵引</a></td><td>S8 牵引制动</td><td>线体中部带式夹持牵引，配合主牵引</td><td>皮带磨损打滑 · 张紧漂移 · 速度同步异常</td><td class="num">4</td></tr>
       <tr><td><a href="12_下牵引.html">12 下牵引</a></td><td>S8 牵引制动</td><td>塔下驱动牵引，与上牵引协同建立线张力</td><td>电机跳停 · 传动轴承磨损 · 表计未接入</td><td class="num">4</td></tr>
-      <tr><td><a href="13_储线器.html">13 储线器</a></td><td>S9 储线张力</td><td>1F 放线段储线/缓冲装置，补偿速度差（实态待 P4 确认）</td><td>张力失稳 · 小车行程异常 · 导向轮磨损</td><td class="num">4</td></tr>
+      <tr><td><a href="13_储线器.html">13 储线器</a></td><td>S9 储线张力</td><td>1F 放线段储线/缓冲装置，补偿速度差</td><td>张力失稳 · 小车行程异常 · 导向轮磨损</td><td class="num">4</td></tr>
       <tr><td><a href="14_转向轮.html">14 转向轮</a></td><td>S9 储线张力</td><td>10F 折返点：缆芯上行→下行转向</td><td>轴承缺脂卡滞 · 齿形带跳齿 · 高空维护不便</td><td class="num">4</td></tr>
       <tr><td><a href="15_龙门放线机.html">15 龙门放线机</a></td><td>S10 收放线</td><td>地面门式放线（横移、张力与dancer控制）</td><td>线盘张力失控 · dancer失准 · 横移卡阻</td><td class="num">4</td></tr>
       <tr><td><a href="16_龙门收线机.html">16 龙门收线机</a></td><td>S10 收放线</td><td>门式收线+盘具流转（含收线转盘/收线架）</td><td>低速重载轴承卡死 · 承载臂打滑 · 排线失准</td><td class="num">5</td></tr>
